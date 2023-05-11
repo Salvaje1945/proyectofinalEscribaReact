@@ -1,0 +1,47 @@
+@use '../../scss/vars' as *;
+@use '../../scss/predef' as *;
+
+#contenedor {
+
+    #cabecera {
+
+        .cabecera__cont {
+
+            .cabecera__cont--nav {
+                display: inline-block;
+                flex-grow: 1;
+
+                ul {
+                    list-style: none;
+                    @extend .flex-6;
+                    gap: 11px;
+
+                    li {
+                        display: inline-block;
+                        width: auto;
+                        font-size: 0.8rem;
+                        font-family: $fnt_01;
+                        color: map-get($color, "negro");
+
+                        img {
+                            display: block;
+                        }
+
+                        a {
+                            color: map-get($color, "negro");
+
+                            &:hover {
+                                color: map-get($color, "gris_01");
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,155 @@
+/*
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+*/
+
+#contenedor {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+
+    "cabecera"
+    "contenido"
+    "pie"
+
+  ;
+}
+
+#cabecera,
+#contenido,
+#pie {
+  width: 100%;
+}
+
+#cabecera {
+  grid-area: cabecera;
+  display: block;
+  background: linear-gradient(180deg, #fff 95%, #f9f5f4 5%);
+  height: 45px;
+  border-bottom: 1px solid #dbdadf;
+  padding: 0 5vw;
+}
+
+.cabecera__cont {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 45px;
+}
+
+.cabecera__cont--nav,
+.cabecera__cont--cart {
+  display: inline-block;
+}
+
+.cabecera__cont--nav {
+  flex-grow: 1;
+}
+
+.cabecera__cont--cart {
+  flex-grow: 0;
+  margin: 0 0 0 2vw;
+  background-color: #ff0000;
+  border-radius: 3px;
+  padding: 0 9px;
+}
+
+.cabecera__cont--cart_cont {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+}
+
+.cabecera__cont--cart_cont div {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #fff;
+  margin: 0 3px 0 0;
+}
+
+.cabecera__cont--cart_cont p {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.cabecera__cont--nav ul {
+  list-style: none;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 11px;
+}
+
+.cabecera__cont--nav ul li {
+  display: inline-block;
+  width: auto;
+  font-size: 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+}
+
+.cabecera__cont--nav ul li img {
+  display: block;
+}
+
+.cabecera__cont--nav ul li a {
+  color: #000;
+}
+
+.cabecera__cont--nav ul li a:hover {
+  color: #333;
+}
+
+#contenido {
+  grid-area: contenido;
+  display: block;
+  height: 85svh;
+  padding: 3svh 5vw;
+}
+
+#pie {
+  grid-area: pie;
+}

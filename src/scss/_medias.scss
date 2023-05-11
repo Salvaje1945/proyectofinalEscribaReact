@@ -1,0 +1,30 @@
+@use 'vars' as *;
+@use 'predef' as *;
+
+@media only screen and (min-width: map-get($wth_res, "tbl_01")) {
+
+    #contenedor {
+
+        #cabecera {
+    
+            .cabecera__cont {
+    
+                .cabecera__cont--nav {
+    
+                    .cabecera__nav--mob {
+                        display: none;
+                    }
+    
+                    .cabecera__nav--dkp {
+                        display: flex;
+                    }
+
+                }
+    
+            }
+    
+        }
+    
+    }
+
+}

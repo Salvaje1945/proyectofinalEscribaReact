@@ -1,0 +1,77 @@
+// ***GENERALES***
+// Tamaño fuente raíz
+
+$root_fsize: 16px !important;
+
+// 01 - ***RESOLUCIONES PARA MEDIAS***
+
+$wth_res: (
+    "mob_01": 325px,
+    "mob_02": 375px,
+    "mob_03": 500px,
+    "tbl_01": 768px,
+    "pst_tbl": 922px,
+    "dkp_01": 1280px,
+    "dkp_02": 1330px,
+    "dkp_03": 1400px,
+    "dkp_04": 1500px,
+);
+
+$hgt_res: (
+    "bkp_01": 359px,
+    "bkp_02": 360px,
+    "bkp_03": 450px,
+    "bkp_04": 599px,
+    "bkp_05": 655px,
+);
+
+$brk_pts: (
+    "bp_01": 960px,
+    "bp_02": 1023px,
+    "bp_03": 1024px,
+    "bp_04": 1052px,
+    "bp_05": 1053px,
+    "bp_06": 1168px,
+);
+
+// 02 - ***COLORES*** 
+
+$color: (
+    "trans": transparent,
+    "negro": #000,
+    "gris_01": #333,
+    "gris_02": #444,
+    "gris_03": #666,
+    "gris_04": #aaa,
+    "gris_05": #ccc,
+    "gris_06": #ededed,
+    "gris_07": #cdcdcd,
+    "gris_08": #cacaca,
+    "gris_09": #999,
+    "gris_10": #dbdadf,
+    "gris_11": #f9f5f4,
+    "gris_12": #faf6f3,
+    "gris_14": #e3e3e1,
+    "gris_15": #f3f3f5,
+    "blanco": #fff,
+    "rojo_01": #ff0000,
+    "rojo_02": #cb0000,
+    "rojo_03": #960101,
+    "rojo_04": #740000,
+    "rojo_05": #860404,
+    "amarillo_01": #ffb526,
+    "naranja_01": #ff7301,
+    "naranja_02": #fb5504,
+    "naranja_03": #f62a00,
+    "verde_01": #258039,
+    "verde_02": #a2c523,
+    "azul_01": #375e97,
+    "azul_02": #1e434c,
+    "celeste_01": #4cb5f5,
+    "celeste_02": #1995ad,
+
+);
+
+// 03 - ***FAMILIAS DE FUENTES***
+
+$fnt_01: 'Poppins', sans-serif;

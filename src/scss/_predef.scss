@@ -1,0 +1,201 @@
+@use 'vars' as *;
+
+.flex-1,
+.flex-2,
+.flex-3,
+.flex-4,
+.flex-5,
+.flex-6,
+.flex-7,
+.flex-8,
+.flex-9,
+.flex-10,
+.flex-11,
+.flex-12,
+.flex-14 {
+    display: flex;
+}
+
+.flex-1,
+.flex-2,
+.flex-3,
+.flex-4,
+.flex-5,
+.flex-6,
+.flex-9,
+.flex-12,
+.flex-14 {
+    flex-flow: row nowrap; 
+}
+
+.flex-10,
+.flex-11 {
+    flex-flow: row wrap; 
+}
+
+.flex-7,
+.flex-8 {
+    flex-flow: column nowrap;
+}
+
+.flex-1,
+.flex-3,
+.flex-5,
+.flex-6,
+.flex-7,
+.flex-8,
+.flex-10,
+.flex-14 {
+    align-items: center;
+}
+
+.flex-1,
+.flex-4,
+.flex-8,
+.flex-11,
+.flex-12 {
+    justify-content: space-between;
+}
+
+.flex-2,
+.flex-9,
+.flex-11,
+.flex-12 {
+    align-items: flex-start;
+}
+
+.flex-4 {
+    align-items: flex-end;
+}
+
+.flex-5,
+.flex-9 {
+    justify-content: space-around;
+}
+
+.flex-7 {
+    justify-content: center;
+}
+
+.flex-6,
+.flex-10 {
+    justify-content: flex-start;
+}
+
+.flex-14 {
+    justify-content: space-evenly;
+}
+
+/*.flex-8 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+}*/
+
+// Menúes desplegables cabecera
+
+@mixin cabeza__desplegables--edit ($cbz_dsp-wth: auto, $cbz_dsp-hgt: 100svh, $cbz_dsp-pos: fixed, $cbz_dsp-pdd: 10px) {
+    font-family: $fnt_01;
+    width: $cbz_dsp-wth;
+    height: $cbz_dsp-hgt;
+    position: $cbz_dsp-pos;
+    transition: .5s;
+    z-index: 999;
+    padding: $cbz_dsp-pdd;
+}
+
+// Cajas hijas
+
+.cabeza__extremos {
+    display: inline-block;
+    padding: 7px;
+}
+
+// Cajas para scroll horizontal
+
+.scroll_horiz {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    margin: 0 0 20px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@mixin scroll_hrz ($scroll_horiz-gap: 10px, $scroll_horiz-mrg: 0 0 20px) {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: $scroll_horiz-gap;
+    margin: $scroll_horiz-mrg;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// Efecto hover negro con h1 
+
+@mixin box_hvrFX-01 ($bx_hvrfx01-bdrRad: 5px, $bx_hvrfx01-pasbgc: rgb(0, 0, 0, 0), $bx_hvrfx01-actbgc: rgb(0, 0, 0, 0.25), $bx_hvrfx01-paswyh: 15px, $bx_hvrfx01-bxpasbr: 50%, $bx_hvrfx01-trans: .2s all) {
+    border-radius: $bx_hvrfx01-bdrRad;
+    position: relative;
+
+    h1 {
+        position: absolute;
+        z-index: 21;
+    }
+
+    .box_hvr {
+        background-color: $bx_hvrfx01-pasbgc;
+        width: $bx_hvrfx01-paswyh;
+        height: $bx_hvrfx01-paswyh;
+        border-radius: $bx_hvrfx01-bxpasbr;
+        visibility: hidden;
+        transition: $bx_hvrfx01-trans;
+        //margin: 50% auto;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        //z-index: 11;
+    }
+
+    &:hover {
+        .box_hvr {
+            background-color: $bx_hvrfx01-actbgc;
+            border-radius: $bx_hvrfx01-bdrRad;
+            //margin: 0;
+            width: 100%;
+            height: 100%;
+            //transform: none;
+            //top: 0;
+            //left: 0;
+            visibility: visible;
+            transition: $bx_hvrfx01-trans;
+        }
+    }
+}
+
+@mixin form__btns ($forms_btn-wth: 100%, $forms_btn-hgt: 42px, $forms_btn-bgc: map-get($color, "azul_02"), $forms_btn-color: map-get($color, "gris_08"), $forms_btn-fntsiz: 1rem, $forms_btn-fntwght: 600, $forms_btn-brdrad: 7px, $forms_btn-hvr_bgc: map-get($color, "verde_01")) {
+    width: $forms_btn-wth;
+    height: $forms_btn-hgt;
+    background-color: $forms_btn-bgc;
+    color: $forms_btn-color;
+    font-family: $fnt_01;
+    font-size: $forms_btn-fntsiz;
+    font-weight: $forms_btn-fntwght;
+    text-align: center;
+    transition: .3s ease all;
+    border-radius: $forms_btn-brdrad;
+
+    &:hover {
+        background-color: $forms_btn-hvr_bgc;
+        transition: .3s linear all;
+    } 
+}

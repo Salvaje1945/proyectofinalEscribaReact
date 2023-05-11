@@ -1,0 +1,49 @@
+@use 'vars' as *;
+@use 'predef' as *;
+
+#contenedor {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+
+        "cabecera"
+        "contenido"
+        "pie"
+
+    ;
+
+    #cabecera,
+    #contenido,
+    #pie {
+        display: block;
+        width: 100%;
+    }
+
+    #cabecera {
+        grid-area: cabecera;
+        background: linear-gradient(180deg, map-get($color, "blanco") 95%, map-get($color, "gris_11") 5%);
+        height: 45px;
+        border-bottom: 1px solid map-get($color, "gris_10");
+        padding: 0 5vw;
+
+        .cabecera__cont {
+            @extend .flex-1;
+            height: 45px;
+        }
+    }
+
+    #contenido {
+        grid-area: contenido;
+        height: 85svh;
+        padding: 3svh 5vw;
+
+        .contenido__temporal--margenparaeldivdetitulo {
+            margin: 25px 0 0;
+        }
+    }
+
+    #pie {
+        grid-area: pie;
+    }
+}

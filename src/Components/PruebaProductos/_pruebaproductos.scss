@@ -1,0 +1,35 @@
+@use '../../scss/vars' as *;
+@use '../../scss/predef' as *;
+
+#contenedor {
+
+    #contenido {
+
+        .contenido__pruebaproductos {
+            margin: 25px 0 35px;
+
+            h2 {
+                color: map-get($color, "rojo_03");
+            }
+
+            .contenido__pruebaproductos--cont {
+                @extend .flex-14;
+                margin: 15px 0;
+    
+                .contenido__pruebaproductos--box {
+                    width: 30%;
+                    padding: 11px;
+                    display: inline-block;
+                    background-color: brown;
+                    color: map-get($color, "blanco");
+                    font-family: $fnt_01;
+                    font-size: 1rem;
+                }
+    
+            }
+
+        }
+
+    }
+
+}

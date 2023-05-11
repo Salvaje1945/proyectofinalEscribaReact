@@ -1,0 +1,53 @@
+@use '../../scss/vars' as *;
+@use '../../scss/predef' as *;
+
+#contenedor {
+
+    #contenido {
+
+        .contenido__contador--botones {
+            @extend .flex-1;
+            gap: 10px;
+            margin: 3svh 0 0;
+
+            .contenido__contador--btn_aum {
+                display: inline-block;
+                @include form__btns ($forms_btn-wth: 100%, $forms_btn-hgt: 42px, $forms_btn-bgc: map-get($color, "verde_01"), $forms_btn-color: map-get($color, "gris_08"), $forms_btn-fntsiz: 1rem, $forms_btn-fntwght: 600, $forms_btn-brdrad: 7px, $forms_btn-hvr_bgc: map-get($color, "azul_02"));
+                flex-grow: 1;
+            }
+
+            .contenido__contador--btn_rest {
+                display: inline-block;
+                @include form__btns ($forms_btn-wth: 100%, $forms_btn-hgt: 42px, $forms_btn-bgc: map-get($color, "rojo_01"), $forms_btn-color: map-get($color, "gris_08"), $forms_btn-fntsiz: 1rem, $forms_btn-fntwght: 600, $forms_btn-brdrad: 7px, $forms_btn-hvr_bgc: map-get($color, "rojo_03"));
+                flex-grow: 1;
+            }
+
+            .contenido__contador--btn_reset {
+                display: inline-block;
+                @include form__btns ($forms_btn-wth: 100%, $forms_btn-hgt: 42px, $forms_btn-bgc: map-get($color, "azul_01"), $forms_btn-color: map-get($color, "gris_08"), $forms_btn-fntsiz: 1rem, $forms_btn-fntwght: 600, $forms_btn-brdrad: 7px, $forms_btn-hvr_bgc: map-get($color, "celeste_02"));
+                flex-grow: 1;
+            }
+
+            
+        }
+
+        .contenido__contador--ipt {
+            display: block;
+            width: 50%;
+            height: 3svh;
+            border: 1px solid map-get($color, "negro");
+            margin: 5svh 0 0;
+
+            &:focus {
+                border: 1px solid map-get($color, "rojo_01");
+            }
+        }
+
+        .contenido__contador--btn_otro {
+            display: inline-block;
+            @include form__btns ($forms_btn-wth: 50%, $forms_btn-hgt: 42px, $forms_btn-bgc: map-get($color, "azul_01"), $forms_btn-color: map-get($color, "gris_08"), $forms_btn-fntsiz: 1rem, $forms_btn-fntwght: 600, $forms_btn-brdrad: 7px, $forms_btn-hvr_bgc: map-get($color, "celeste_02"));
+        }
+        
+    }
+
+}
