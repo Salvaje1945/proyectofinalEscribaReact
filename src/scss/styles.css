@@ -25,14 +25,14 @@
 .flex-6,
 #contenedor #cabecera .cabecera__cont .cabecera__cont--nav ul,
 .flex-9,
-.flex-12,
-.flex-14,
-#contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
+.flex-12 {
   flex-flow: row nowrap;
 }
 
 .flex-10,
-.flex-11 {
+.flex-11,
+.flex-14,
+#contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
   flex-flow: row wrap;
 }
 
@@ -58,7 +58,9 @@
 .flex-4,
 .flex-8,
 .flex-11,
-.flex-12 {
+.flex-12,
+.flex-14,
+#contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
   justify-content: space-between;
 }
 
@@ -87,11 +89,11 @@
   justify-content: flex-start;
 }
 
-.flex-14, #contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
-  justify-content: space-evenly;
+/*
+.flex-14 {
+    justify-content: space-evenly;
 }
-
-/*.flex-8 {
+.flex-8 {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -187,7 +189,6 @@ h3 {
 }
 #contenedor #contenido {
   grid-area: contenido;
-  height: 85svh;
   padding: 3svh 5vw;
 }
 #contenedor #contenido .contenido__temporal--margenparaeldivdetitulo {
@@ -341,7 +342,9 @@ h3 {
   color: #960101;
 }
 #contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
+  gap: 21px;
   margin: 15px 0;
+  list-style: none;
 }
 #contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont .contenido__pruebaproductos--box {
   width: 30%;

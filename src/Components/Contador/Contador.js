@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from 'react'
 
 const Contador =()=>{
     const [contador, setContador] = useState(0)
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(true)
+    const [btnShow, setBtnShow] = useState(false)
+    const [btnHide, setBtnHide] = useState(true)
     const [noCont, setNoCont] = useState(true)
     const textInput = useRef()
 
@@ -19,20 +21,6 @@ const Contador =()=>{
 
     }
 
-    //const ocultarSumar = ()=> setNoCont(false)
-
-    // const sumarSioNo = (cantidad)=> new Promise((resolve, reject)=>{
-    //     if(cantidad <= 20){
-    //         siOno = true
-    //         resolve(siOno)
-    //     }
-    //     if(cantidad >= 21){
-    //         siOno = false
-    //         reject(siOno)
-    //     }
-        
-    // })
-
     const focusTextInput = ()=> textInput.current.focus()
 
     const cambiarTextInput = ()=> textInput.current.value = 'A ver qué onda con esto'
@@ -45,11 +33,19 @@ const Contador =()=>{
     }
 
 
-    // useEffect(()=>{
+    useEffect(()=>{
 
-    //     console.log('Se activó mostrar/ocultar')
+        if(show === true){
+            setBtnShow(false)
+            setBtnHide(true)
+        } else {
+            setBtnHide(false)
+            setBtnShow(true)
+        }
 
-    // }, [show])
+        //console.log('Se activó mostrar/ocultar')
+
+    }, [show])
 
     useEffect(() => {
 
@@ -79,9 +75,10 @@ const Contador =()=>{
             mostrarSumar(result)
         }).catch(error =>{
             mostrarSumar(error)
-        }).finally(()=>{
-            console.log('Promesa finalizada, comete esta **** con ensalada.')
         })
+        // .finally(()=>{
+        //     console.log('Promesa finalizada, comete esta **** con ensalada.')
+        // })
 
 
 
@@ -127,12 +124,12 @@ const Contador =()=>{
                 <button className='contenido__contador--btn_reset' onClick={()=> setContador(0)}>
                     Resetear
                 </button>
-                <button className='contenido__contador--btn_aum' onClick={mostrarContador}>
+                {btnShow && <button className='contenido__contador--btn_aum' onClick={mostrarContador}>
                     Mostrar
-                </button>
-                <button className='contenido__contador--btn_rest' onClick={ocultarContador}>
+                </button>}
+                {btnHide && <button className='contenido__contador--btn_rest' onClick={ocultarContador}>
                     Ocultar
-                </button>
+                </button>}
             </div>
             <div><input type="text" ref={textInput} className='contenido__contador--ipt'/></div>
             <div><input type="button" value='Hacé foco en el input.' className='contenido__contador--btn_otro' onClick={focusTextInput} /></div>

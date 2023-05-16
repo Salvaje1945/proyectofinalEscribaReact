@@ -1,8 +1,20 @@
 import SubTitulo from "../SubTitulo"
+//import ItemDetail from "../ItemDetail";
+import { useEffect, useState } from "react";
 
-const misProductos = []
+function PruebaProductos() {
 
-const PruebaProductos = () => {
+    const [productos, setProductos] = useState([])
+
+    useEffect(() => {
+        obtenerProductos()
+            .then(productos => {
+                setProductos(productos)
+            })
+            .catch(error => {
+                console.error("Ocurrió un error al obtener los productos:", error)
+            })
+    }, [])
 
     function obtenerProductos() {
         return fetch("http://localhost:3001/productos")
@@ -22,46 +34,19 @@ const PruebaProductos = () => {
             });
     }
 
-    obtenerProductos().then(productos => {
-        // productos.forEach(producto => {
-        //     console.log(producto);
-        // });
-
-        for (const producto of productos) {
-            misProductos.push(producto)
-        }
-    }).catch(error => {
-        console.error("Ocurrió un error al obtener los productos:", error);
-    });
-
-    console.log(misProductos)
-
-    function mostrarProductos() {
-        console.log('¿Hola?')
-        for(const prod of misProductos){
-            const elProd = document.createElement('div')
-            elProd.className = 'contenido__pruebaproductos--box'
-            elProd.innerHTML = `<p>${prod.nombre}</p>
-                                <p>${prod.descripcion}</p>
-                                <p>${prod.stock}</p>`
-            
-            const productoContenedor = document.querySelector('#contenido-pruebaproductos-contenedor')
-            console.log('sorongo')
-            productoContenedor.appendChild(elProd)
-        }
-    }
-
-    mostrarProductos()
-        
-
     return <div className="contenido__pruebaproductos">
-        <SubTitulo subtitulo='Productos' />
-        <div className="contenido__pruebaproductos--cont" id="contenido-pruebaproductos-contenedor">
-            {/* <div className="contenido__pruebaproductos--box">Caca</div>
-            <div className="contenido__pruebaproductos--box">Culo</div>
-            <div className="contenido__pruebaproductos--box">Pedo-pis</div> */}
-        </div>
-    </div>
+                <SubTitulo subtitulo='Productos' />
+                <div className="contenido__pruebaproductos--cont" id="contenido-pruebaproductos-contenedor">
+                    {productos.map(producto => (
+                        <div className="contenido__pruebaproductos--box" key={producto.id}>
+                            <p>ID: {producto.id}</p>
+                            <p>Nombre: {producto.nombre}</p>
+                            <p>Descripción: {producto.descripcion}</p>
+                            <p>Stock: {producto.stock}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
 }
 
 export default PruebaProductos
