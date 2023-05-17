@@ -13,6 +13,8 @@ const ItemListContainer = (props)=> {
 
     const { id } = useParams()
 
+    console.log(id)
+
     const tituloItemListCont = 'Nuestros productos:'
 
     const [productos, setProductos] = useState([]);

@@ -56,7 +56,7 @@ function App() {
         <Route path='/catalogo' element={<ItemListContainer listaProds={productos}/>} />
 
         {/* <Route path='/categoria/:categoriaId' element={<ItemListContainer listaCategs={categoriasUnicas}/>} /> */}
-        <Route path='/categoria/:categoryId' element={<ItemListContainer listaProds={productos}/>} />
+        <Route path='/categoria/:id' element={<ItemListContainer listaProds={productos}/>} />
 
       </Routes>
     
