@@ -5,21 +5,21 @@
 
     #contenido {
 
-        .contenido__pruebaproductos {
+        .contenido__itemlistcontainer {
             margin: 25px 0 35px;
 
             h2 {
                 color: map-get($color, "rojo_03");
             }
 
-            .contenido__pruebaproductos--cont {
+            .contenido__itemlist--cont {
                 @extend .flex-14;
                 //gap: 21px;
                 gap: 21px;
                 margin: 15px 0;
                 list-style: none;
     
-                .contenido__pruebaproductos--box {
+                .contenido__item--box {
                     width: 30%;
                     //flex-grow: 1;
                     padding: 11px;
@@ -29,6 +29,18 @@
                     font-family: $fnt_01;
                     font-size: 1rem;
                     //margin: 0 0 15px;
+
+                    .contenido__item--box_img-cont {
+                        width: 100%;
+                        background-color: chartreuse;
+
+                        img {
+                            object-fit:cover;
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                        }
+                    }
                 }
     
             }

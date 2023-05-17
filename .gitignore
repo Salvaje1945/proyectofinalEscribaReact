@@ -25,8 +25,13 @@ yarn-error.log*
 /src/Components/NavBar/backup-NavBar.js
 /src/Components/NavBar/_backup-navbar.scss
 /src/Components/Contador/backup-Contador.js
+/src/Components/Contador/backup-Contador2.js
+/src/Components/Contador/backup-Contador3.js
+/src/Components/ItemDetail/backup-ItemDetail.js
 /src/backup-App.js
 /src/backup-App2.js
 /mirarAPI.txt
+/backup-productos.json
+/BACKUP-PRE-ROUTER/
 
 

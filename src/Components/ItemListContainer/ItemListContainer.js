@@ -1,61 +1,46 @@
-import ItemDetail from '../ItemDetail'
 import Titulo from '../Titulo'
+import Lista from '../Lista'
+//import ItemDetail from '../ItemDetail'
 //import PruebaProductos from '../PruebaProductos'
 //import ItemDetail from '../ItemDetail'
-//import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 const ItemListContainer = (props)=> {
     const { listaProds } = props
+
+    console.log(listaProds)
+
+    const { id } = useParams()
+
     const tituloItemListCont = 'Nuestros productos:'
 
-    //const [productos, setProductos] = useState([])
+    const [productos, setProductos] = useState([]);
+  
+    useEffect(() => {
+        const getsProductsPromise = new Promise((res, rej) => {
+            if(id){
+                const productosFiltrados = listaProds.filter(e => e.categoria === id)
+                res(productosFiltrados);
+              }
+              res(listaProds)
+          });
 
-    // useEffect(() => {
-    //     obtenerProductos()
-    //         .then(productos => {
-    //             setProductos(productos)
-    //         })
-    //         .catch(error => {
-    //             console.error("Ocurrió un error al obtener los productos:", error)
-    //         })
-    // }, [])
+        getsProductsPromise.then((arrayp) => setProductos(arrayp)).catch((err) => console.log(err));
+    }, [id]);
 
-    // function obtenerProductos() {
-    //     return fetch("http://localhost:3001/productos")
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error("No se pudo obtener la lista de productos");
-    //             }
-    //             return response.json();
-    //         })
-    //         .then(productos => {
-    //             return productos.map(producto => ({
-    //                 id: producto.id,
-    //                 nombre: producto.nombre,
-    //                 descripcion: producto.descripcion,
-    //                 stock: producto.stock
-    //             }));
-    //         });
-    // }
+  
 
-    return <div>
-                <div className="contenido__pruebaproductos">
-                    <Titulo titulo = {tituloItemListCont} />
-                    <ul className="contenido__pruebaproductos--cont" id="contenido-pruebaproductos-contenedor">
-                        {listaProds.map((item)=>{
-                            return <ItemDetail {...item}/>
-                        })}
-                    </ul>
-                    {/* {props.children} */}
+
+
+    return <main id="contenido">
+                <div>
+                    <div className="contenido__itemlistcontainer">
+                        <Titulo titulo = {tituloItemListCont} />
+                        <Lista lista = {productos} />
+                    </div>
                 </div>
-                {/* <div>
-                    <PruebaProductos />
-                </div> */}
-                {/* <div>
-                    <ItemDetail />
-                </div> */}
-            </div>
-
+            </main>
 }
 
 export default ItemListContainer

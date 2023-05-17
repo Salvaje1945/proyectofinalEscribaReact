@@ -13,7 +13,7 @@
 .flex-11,
 .flex-12,
 .flex-14,
-#contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
+#contenedor #contenido .contenido__itemlistcontainer .contenido__itemlist--cont {
   display: flex;
 }
 
@@ -32,7 +32,7 @@
 .flex-10,
 .flex-11,
 .flex-14,
-#contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
+#contenedor #contenido .contenido__itemlistcontainer .contenido__itemlist--cont {
   flex-flow: row wrap;
 }
 
@@ -50,7 +50,7 @@
 .flex-8,
 .flex-10,
 .flex-14,
-#contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
+#contenedor #contenido .contenido__itemlistcontainer .contenido__itemlist--cont {
   align-items: center;
 }
 
@@ -60,7 +60,7 @@
 .flex-11,
 .flex-12,
 .flex-14,
-#contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
+#contenedor #contenido .contenido__itemlistcontainer .contenido__itemlist--cont {
   justify-content: space-between;
 }
 
@@ -154,11 +154,11 @@ h3 {
 }
 
 h1 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 h3 {
@@ -335,18 +335,18 @@ h3 {
   transition: 0.3s linear all;
 }
 
-#contenedor #contenido .contenido__pruebaproductos {
+#contenedor #contenido .contenido__itemlistcontainer {
   margin: 25px 0 35px;
 }
-#contenedor #contenido .contenido__pruebaproductos h2 {
+#contenedor #contenido .contenido__itemlistcontainer h2 {
   color: #960101;
 }
-#contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont {
+#contenedor #contenido .contenido__itemlistcontainer .contenido__itemlist--cont {
   gap: 21px;
   margin: 15px 0;
   list-style: none;
 }
-#contenedor #contenido .contenido__pruebaproductos .contenido__pruebaproductos--cont .contenido__pruebaproductos--box {
+#contenedor #contenido .contenido__itemlistcontainer .contenido__itemlist--cont .contenido__item--box {
   width: 30%;
   padding: 11px;
   display: inline-block;
@@ -354,6 +354,17 @@ h3 {
   color: #fff;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+}
+#contenedor #contenido .contenido__itemlistcontainer .contenido__itemlist--cont .contenido__item--box .contenido__item--box_img-cont {
+  width: 100%;
+  background-color: chartreuse;
+}
+#contenedor #contenido .contenido__itemlistcontainer .contenido__itemlist--cont .contenido__item--box .contenido__item--box_img-cont img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 @media only screen and (min-width: 768px) {

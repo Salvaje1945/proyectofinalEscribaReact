@@ -1,18 +1,23 @@
 import CartWidget from "../CartWidget"
 import logo from "./floresya.png"
+import { Link } from 'react-router-dom'
 
 function NavBar() {
-    return <div className="cabecera__cont">
-                <nav className="cabecera__cont--nav">
-                    <ul>
-                        <li><a href="index.html"><img src={logo} alt="Flores Ya" /></a></li>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="opcion1.html">Opción 1</a></li>
-                        <li><a href="opcion2.html">Opción 2</a></li>
-                    </ul>
-                </nav>
-                <CartWidget />
-            </div>
+    return <header id="cabecera">
+                <div className="cabecera__cont">
+                    <nav className="cabecera__cont--nav">
+                        <ul>
+                            <li><Link to={'/'}><img src={logo} alt="Flores Ya" /></Link></li>
+                            <li><Link to={'/catalogo'}>Catálogo</Link></li>
+                            <li><Link to={'/categoria/Flores'}>Flores</Link></li>
+                            <li><Link to={'/categoria/Decoración'}>Decoración</Link></li>
+                            <li><Link to={'/categoria/Plantas'}>Plantas</Link></li>
+                            <li><Link to={'/categoria/Insumos'}>Insumos</Link></li>
+                        </ul>
+                    </nav>
+                    <CartWidget />
+                </div>
+           </header> 
 }
 
 export default NavBar
