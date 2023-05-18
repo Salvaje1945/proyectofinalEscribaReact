@@ -28,8 +28,10 @@ yarn-error.log*
 /src/Components/Contador/backup-Contador2.js
 /src/Components/Contador/backup-Contador3.js
 /src/Components/ItemDetail/backup-ItemDetail.js
+/src/Components/ItemListContainer/backup-ItemListContainer.js
 /src/backup-App.js
 /src/backup-App2.js
+/src/backup-App3.js
 /mirarAPI.txt
 /backup-productos.json
 /BACKUP-PRE-ROUTER/

@@ -1,45 +1,77 @@
 import Titulo from '../Titulo'
 import Lista from '../Lista'
-//import ItemDetail from '../ItemDetail'
-//import PruebaProductos from '../PruebaProductos'
-//import ItemDetail from '../ItemDetail'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-const ItemListContainer = (props)=> {
-    const { listaProds } = props
-
-    console.log(listaProds)
+const ItemListContainer = ()=> {
+    
+    //const tituloItemListCont = 'Nuestros productos:'
 
     const { id } = useParams()
 
-    console.log(id)
+    const [productos, setProductos] = useState([])
+    const [items, setItems] = useState([])
+    const [titulo, setTitulo] = useState()
 
-    const tituloItemListCont = 'Nuestros productos:'
+    useEffect(() => {
+        obtenerProductos()
+          .then(productos => {
+            setProductos(productos)
+            setItems(productos)
+          })
+          .catch(error => {
+            console.error("Ocurrió un error al obtener los productos:", error)
+          })
+      }, [])
 
-    const [productos, setProductos] = useState([]);
-  
+    async function obtenerProductos() {
+        const response = await fetch("http://localhost:3001/productos");
+        if (!response.ok) {
+            throw new Error("No se pudo obtener la lista de productos");
+        }
+        const productos = await response.json();
+        return productos.map(producto => ({
+            id: producto.id,
+            nombre: producto.nombre,
+            descripcion: producto.descripcion,
+            categoria: producto.categoria,
+            precio: producto.precio,
+            stock: producto.stock,
+            foto: producto.foto
+        }));
+    }
+
     useEffect(() => {
         const getsProductsPromise = new Promise((res, rej) => {
             if(id){
-                const productosFiltrados = listaProds.filter(e => e.categoria === id)
+                const productosFiltrados = productos.filter(e => e.categoria === id)
                 res(productosFiltrados);
               }
-              res(listaProds)
+              res(productos)
           });
 
-        getsProductsPromise.then((arrayp) => setProductos(arrayp)).catch((err) => console.log(err));
-    }, [id]);
+        getsProductsPromise.then((arrayp) => setItems(arrayp)).catch((err) => console.log(err));
+        if(id){
+            setTitulo(`${id}:`)
+        } else {
+            setTitulo('Nuestros productos:')
+        }
+    }, [id, productos]);
 
-  
+  // productos.map((categ)=> categ.categoria)
+  //console.log(productos.map(categ => categ.categoria))
+
+//   const categoriasUnicas = [...new Set(productos.map(categ => categ.categoria))];
+
+//   console.log(categoriasUnicas);
 
 
 
     return <main id="contenido">
                 <div>
                     <div className="contenido__itemlistcontainer">
-                        <Titulo titulo = {tituloItemListCont} />
-                        <Lista lista = {productos} />
+                        <Titulo titulo = {titulo} />
+                        <Lista lista = {items} />
                     </div>
                 </div>
             </main>
