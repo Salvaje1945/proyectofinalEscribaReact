@@ -6,41 +6,90 @@
     #contenido {
 
         .contenido__itemlistcontainer {
-            margin: 25px 0 35px;
+            //margin: 25px 0 35px;
 
             h2 {
                 color: map-get($color, "rojo_03");
             }
 
             .contenido__itemlist--cont {
-                @extend .flex-14;
+                @include caja__flexible--edit ($flx_bx_ff: row wrap, $flx_bx_alit: flex-start, $flx_bx_juco: flex-start, $flx_bx_gap: 3vw);
+                //@extend .flex-14;
                 //gap: 21px;
-                gap: 21px;
+                //gap: 21px;
                 margin: 15px 0;
                 list-style: none;
     
                 .contenido__item--box {
-                    width: 30%;
+                    //width: 31%;
+                    width: 43.5vw;
                     //flex-grow: 1;
-                    padding: 11px;
+                    padding: 1.75vw;
                     display: inline-block;
                     background-color: brown;
                     color: map-get($color, "blanco");
                     font-family: $fnt_01;
                     font-size: 1rem;
+                    border-radius: 9px;
                     //margin: 0 0 15px;
 
                     .contenido__item--box_img-cont {
                         width: 100%;
-                        background-color: chartreuse;
+                        margin: 0 0 1svh 0;
+                        border-radius: 5px;
 
                         img {
                             object-fit:cover;
                             width: 100%;
                             height: 100%;
                             display: block;
+                            border-radius: 5px;
                         }
                     }
+
+                    h3 {
+                        font-size: 5vw;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        // height: 54px;
+                        // overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    
+
+                    /*
+
+                    &:first-child {
+                        h3 {
+                            font-size: 5vw;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            // height: 54px;
+                            // overflow: hidden;
+                            text-overflow: ellipsis;
+                            color:chartreuse;
+                        }
+                    }
+
+                    .contenido__item--box_titulo {
+                        text-overflow: ellipsis;
+                        //height: 27px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        width: 100%;
+
+                        h3 {
+                            font-size: 1.15rem;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            // height: 54px;
+                            // overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+
+                    */
                 }
     
             }

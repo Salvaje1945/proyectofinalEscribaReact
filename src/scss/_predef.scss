@@ -96,6 +96,14 @@
     justify-content: space-between;
 }*/
 
+@mixin caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 10px) {
+    display: flex;
+    flex-flow: $flx_bx_ff;
+    align-items: $flx_bx_alit;
+    justify-content: $flx_bx_juco;
+    gap: $flx_bx_gap;
+}
+
 // Menúes desplegables cabecera
 
 @mixin cabeza__desplegables--edit ($cbz_dsp-wth: auto, $cbz_dsp-hgt: 100svh, $cbz_dsp-pos: fixed, $cbz_dsp-pdd: 10px) {

@@ -1,5 +1,7 @@
 import ItemDetail from "../ItemDetail"
+import ProductoTitulo from '../ProductoTitulo'
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
 
 const Lista = (todoList)=> {
     const { lista } = todoList
@@ -34,20 +36,19 @@ const Lista = (todoList)=> {
             {mostrarLista && <ul className="contenido__itemlist--cont">
                 {lista.map((list)=>{
                     return (
-                        <li className="contenido__item--box" key={list.id} onClick={()=> setItemElegido(list.id)}>
-                            <div className="contenido__item--box_img-cont"><img src={list.foto} alt={list.nombre} /></div>
-                            <p>{list.nombre}</p>
-                            <p>{list.descripcion}</p>
-                            <p>Categoría: {list.categoria}</p>
-                            <p>${list.precio}</p>
-                            <p>Stock: {list.stock}</p>
+                        <li className="contenido__item--box" key={list.id}>
+                            <Link to={`/productos/${list.id}`} onClick={()=> setItemElegido(list.id)}>
+                                <div className="contenido__item--box_img-cont"><img src={list.foto} alt={list.nombre} /></div>
+                                <ProductoTitulo nombre={list.nombre} />
+                                <p>${list.precio}</p>
+                            </Link>
                         </li>
                     )
                 })}
             </ul>}
             {mostrarItem && <div>
-                <ItemDetail item={itemElegido} />
-                <p onClick={()=> setItemElegido(0)}>Ver todos</p>
+                <ItemDetail item={itemElegido}/>
+                {/* <p onClick={()=> setItemElegido(0)}>Ver todos</p> */}
             </div>}
         </div>
 

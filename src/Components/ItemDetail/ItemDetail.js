@@ -1,12 +1,17 @@
 import Titulo from "../Titulo"
+import { useParams } from "react-router-dom"
 
 const ItemDetail = (props)=>{
 
     const { item } = props
 
+    const { id } = useParams()
+
     console.log(item)
 
-    const tituloItem = `Elegiste el item id n°: ${item}`
+    console.log(id)
+
+    const tituloItem = `Elegiste el item id n°: ${id}`
 
     return (
         // <div className="contenido__pruebaproductos--box" key={id}>

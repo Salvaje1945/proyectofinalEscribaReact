@@ -1,30 +1,74 @@
 @use 'vars' as *;
 @use 'predef' as *;
 
+@media only screen and (min-width: map-get($wth_res, "mob_04")) {
+
+    #contenedor {
+
+        #contenido {
+
+            .contenido__itemlistcontainer {
+
+                .contenido__itemlist--cont {
+
+                    .contenido__item--box {
+                        width: 28vw;
+
+                        h3 {
+                            font-size: 3vw;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+}
+
+@media only screen and (min-width: map-get($brk_pts, "bp_03")) {
+
+    #contenedor {
+
+        #contenido {
+
+            .contenido__itemlistcontainer {
+
+                .contenido__itemlist--cont {
+
+                    .contenido__item--box {
+                        width: 20.23vw;
+                        padding: 1vw;
+
+                        h3 {
+                            font-size: 2vw;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+}
+
+/*
+
 @media only screen and (min-width: map-get($wth_res, "tbl_01")) {
 
     #contenedor {
 
         #cabecera {
     
-            .cabecera__cont {
-    
-                .cabecera__cont--nav {
-    
-                    .cabecera__nav--mob {
-                        display: none;
-                    }
-    
-                    .cabecera__nav--dkp {
-                        display: flex;
-                    }
-
-                }
-    
-            }
+            display: none;
     
         }
     
     }
 
 }
+*/

@@ -68,11 +68,9 @@ const ItemListContainer = ()=> {
 
 
     return <main id="contenido">
-                <div>
-                    <div className="contenido__itemlistcontainer">
-                        <Titulo titulo = {titulo} />
-                        <Lista lista = {items} />
-                    </div>
+                <div className="contenido__itemlistcontainer">
+                    <Titulo titulo = {titulo} />
+                    <Lista lista = {items} />
                 </div>
             </main>
 }

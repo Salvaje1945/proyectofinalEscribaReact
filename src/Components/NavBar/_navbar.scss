@@ -5,39 +5,129 @@
 
     #cabecera {
 
+        .cabecera__nav--desp {
+            display: block;
+            position: fixed;
+            width: 100%;
+            height: 93.6260623229svh;
+            top: 6.3739376771svh;
+            left: -150%;
+            transition: .5s ease all;
+            z-index: 999;
+            background-color: brown;
+            color: map-get($color, "blanco");
+            font-family: $fnt_01;
+            padding: 3svh 5vw;
+
+            ul {
+                @include caja__flexible--edit ($flx_bx_ff: column nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 21px);
+
+
+                li {
+                    display: block;
+                    font-size: 1.5rem;
+
+                    .cabecera__desp--cart {
+                        background-color: map-get($color, "blanco");
+                        border-radius: 3px;
+                        padding: 0 9px;
+                        width: 44px;
+                        
+                        .cabecera__cont--cart_cont {
+
+                            div,
+                            p {
+                                color: map-get($color, "negro");
+                            }
+                        }
+                    }
+
+                    &:first-child {
+                        align-self: flex-start;
+                    }
+                    
+                }
+            }
+        }
+
+        .cabecera__nav--desp.activo {
+            left: 0;
+            transition: .3s linear all;
+        }
+
         .cabecera__cont {
+
+            .cabecera__cont--logo {
+                display: inline-block;
+                flex-grow: 0;
+                margin: 0 7px 0 0;
+
+                img {
+                    display: block;
+                }
+            }
 
             .cabecera__cont--nav {
                 display: inline-block;
                 flex-grow: 1;
 
-                ul {
-                    list-style: none;
-                    @extend .flex-6;
-                    gap: 11px;
+                .cabecera__cont--nav_box {
+                    @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 0);
 
-                    li {
+                    ul {
+                        list-style: none;
+                        //@include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: flex-start, $flx_bx_gap: 11px);
+                        //@extend .flex-6;
+                        gap: 11px;
                         display: inline-block;
-                        width: auto;
-                        font-size: 0.8rem;
-                        font-family: $fnt_01;
-                        color: map-get($color, "negro");
-
-                        img {
-                            display: block;
-                        }
-
-                        a {
+                        flex-grow: 1;
+    
+                        li {
+                            display: inline-block;
+                            width: auto;
+                            font-size: 0.8rem;
+                            font-family: $fnt_01;
                             color: map-get($color, "negro");
+                            margin: 0 7px;
+    
+                            a {
+                                color: map-get($color, "negro");
+    
+                                &:hover {
+                                    color: map-get($color, "gris_01");
+                                }
+                            }
+    
+                        }
+    
+                    }
+    
+                    .cabecera__cont--cart {
+                        display: inline-block;
+                        flex-grow: 0;
+                        background-color: map-get($color, "rojo_01");
+                        border-radius: 3px;
+                        padding: 0 9px;
 
-                            &:hover {
-                                color: map-get($color, "gris_01");
+                        .cabecera__cont--cart_cont {
+
+                            div,
+                            p {
+                                color: map-get($color, "blanco");
                             }
                         }
                     }
-
                 }
 
+            }
+
+            .cabcera__cont--btn {
+                display: inline-block;
+                flex-grow: 0;
+                font-size: 1.75rem;
+                color: map-get($color, "negro");
+                height: 30px;
+                line-height: 1.15;
             }
 
         }

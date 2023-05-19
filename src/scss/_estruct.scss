@@ -23,20 +23,23 @@
     #cabecera {
         grid-area: cabecera;
         background: linear-gradient(180deg, map-get($color, "blanco") 95%, map-get($color, "gris_11") 5%);
-        height: 45px;
+        //height: 45px;
+        height: 6.3739376771svh;
         border-bottom: 1px solid map-get($color, "gris_10");
         padding: 0 5vw;
 
         .cabecera__cont {
-            @extend .flex-1;
-            height: 45px;
+            @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 0);
+            //@extend .flex-1;
+            //height: 45px;
+            height: 6.3739376771svh;
         }
     }
 
     #contenido {
         grid-area: contenido;
         //height: 85svh;
-        padding: 3svh 5vw;
+        padding: 3svh 5%;
 
         .contenido__temporal--margenparaeldivdetitulo {
             margin: 25px 0 0;
