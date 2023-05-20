@@ -38,7 +38,7 @@
 
     #contenido {
         grid-area: contenido;
-        //height: 85svh;
+        min-height: 68.6260623229svh;
         padding: 3svh 5%;
 
         .contenido__temporal--margenparaeldivdetitulo {
@@ -46,7 +46,15 @@
         }
     }
 
+    #contenido.item {
+        display: grid;
+        place-items: center;
+    }
+
     #pie {
         grid-area: pie;
+        background-color: map-get($color, "gris_01");
+        color: map-get($color, "blanco");
+        height: 25svh;
     }
 }

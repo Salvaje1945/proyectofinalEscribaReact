@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 const ItemListContainer = ()=> {
-    
-    //const tituloItemListCont = 'Nuestros productos:'
 
     const { id } = useParams()
 
@@ -64,6 +62,8 @@ const ItemListContainer = ()=> {
 //   const categoriasUnicas = [...new Set(productos.map(categ => categ.categoria))];
 
 //   console.log(categoriasUnicas);
+
+    console.log(items)
 
 
 

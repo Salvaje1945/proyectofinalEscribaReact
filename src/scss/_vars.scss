@@ -8,21 +8,24 @@ $root_fsize: 16px !important;
 $wth_res: (
     "mob_01": 325px,
     "mob_02": 375px,
-    "mob_03": 500px,
-    "mob_04": 690px,
-    "tbl_01": 769px,
+    "mob_03": 412px,
+    "mob_04": 500px,
+    "tbl_01": 600px,
+    "tbl_02": 690px,
+    "tbl_03": 768px,
     "pst_tbl": 922px,
-    "dkp_01": 1280px,
-    "dkp_02": 1330px,
-    "dkp_03": 1400px,
-    "dkp_04": 1500px,
+    "dkp_01": 1024px,
+    "dkp_02": 1280px,
+    "dkp_03": 1330px,
+    "dkp_04": 1400px,
+    "dkp_05": 1500px,
 );
 
 $hgt_res: (
     "bkp_01": 359px,
     "bkp_02": 360px,
     "bkp_03": 450px,
-    "bkp_04": 599px,
+    "bkp_04": 600px,
     "bkp_05": 655px,
 );
 
@@ -32,7 +35,8 @@ $brk_pts: (
     "bp_03": 1024px,
     "bp_04": 1052px,
     "bp_05": 1053px,
-    "bp_06": 1168px,
+    "bp_06": 1146px,
+    "bp_07": 1168px,
 );
 
 // 02 - ***COLORES*** 
@@ -60,6 +64,9 @@ $color: (
     "rojo_03": #960101,
     "rojo_04": #740000,
     "rojo_05": #860404,
+    "rojo_06": #d8010b,
+    "rojo_07": #b90404,
+    "rojo_08": #b50000,
     "amarillo_01": #ffb526,
     "naranja_01": #ff7301,
     "naranja_02": #fb5504,

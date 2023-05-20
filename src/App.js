@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './Components/NavBar';
+import PieContainer from './Components/PieContainer';
 import Inicio from './Components/Inicio';
 import ItemListContainer from './Components/ItemListContainer';
 import ItemDetail from './Components/ItemDetail';
@@ -12,6 +13,8 @@ function App() {
     <BrowserRouter>
     
       <NavBar />
+
+      <PieContainer />
 
       <Routes>
 

@@ -1,7 +1,7 @@
 @use 'vars' as *;
 @use 'predef' as *;
 
-@media only screen and (min-width: map-get($wth_res, "mob_04")) {
+@media only screen and (min-width: map-get($wth_res, "tbl_01")) {
 
     #contenedor {
 
@@ -23,13 +23,74 @@
 
             }
 
+            .contenido__itemdetail--cont {
+                padding: 2vw;
+                grid-template-columns: 45% 55%;
+                grid-template-rows: repeat(3, auto);
+                grid-template-areas:
+    
+                    "naveg naveg"
+                    "img info"
+                    "accion accion"
+    
+                ;
+
+                .contenido__itemdetail--nav {
+    
+                    ul {
+                            
+                        li {
+                            font-size: 2.75vw;
+                        }
+
+                    }
+
+                }
+
+                .contenido__itemdetail--img {
+                    margin: 0 0 1.5svh;
+    
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                        // display: block;
+                        // border-radius: 5px;
+                    }
+                }
+    
+    
+                .contenido__itemdetail--txt {
+                    padding: 0 0 0 2vw;
+    
+                    h1 {
+                        font-size: 4vw;
+                        line-height: 1;
+                    }
+
+                    .contenido__itemdetail--txt_desc {
+                        font-size: 3vw;
+                        line-height: 1.1;
+                        font-weight: 300;
+                        margin: 1.5svh 0;
+                    }
+    
+                    .contenido__itemdetail--txt_prec {
+                        //margin: 1svh 0;
+                        font-size: 2.75vw;
+                        line-height: 1;
+                    }
+    
+                }
+    
+            }
+
         }
 
     }
 }
 
-
-@media only screen and (min-width: map-get($wth_res, "tbl_01")) {
+@media only screen and (min-width: map-get($wth_res, "tbl_03")) {
 
     #contenedor {
 
@@ -40,7 +101,8 @@
                 .contenido__itemlist--cont {
 
                     .contenido__item--box {
-                        width: calc(29vw - 17px);
+                        //width: calc(29vw - 17px);
+                        width: 28vw;
                     }
 
                 }
@@ -51,12 +113,36 @@
 
     }
 
-
 }
 
-@media only screen and (min-width: map-get($brk_pts, "bp_03")) {
+@media only screen and (min-width: map-get($wth_res, "dkp_01")) {
 
     #contenedor {
+
+        #cabecera {
+
+            .cabecera__cont {
+    
+                .cabecera__cont--nav {
+    
+                    .cabecera__cont--nav_box {
+    
+                        ul {
+        
+                            li {
+                                font-size: 1.3rem;
+                                margin: 0 9px;
+                            }
+        
+                        }
+        
+                    }
+    
+                }
+    
+            }
+
+        }
 
         #contenido {
 
@@ -78,12 +164,139 @@
 
             }
 
+            .contenido__itemdetail--cont {
+                padding: 1.5vw;
+                margin: 11vw;
+                width: 65vw;
+                min-height: 46svh;
+                //margin: auto;
+
+                .contenido__itemdetail--nav {
+    
+                    ul {
+                        @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: flex-start, $flx_bx_gap: 2vw);
+                            
+                        li {
+                            font-size: 1.75vw;
+                        }
+
+                    }
+
+                }
+
+                .contenido__itemdetail--img {
+                    margin: 0 0 1.5svh;
+    
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                        // display: block;
+                        // border-radius: 5px;
+                    }
+                }
+    
+                .contenido__itemdetail--txt {
+                    padding: 0 0 0 2vw;
+    
+                    h1 {
+                        font-size: 3vw;
+                        line-height: 1;
+                    }
+
+                    .contenido__itemdetail--txt_desc {
+                        font-size: 2vw;
+                        line-height: 1.1;
+                        font-weight: 300;
+                        margin: 1.5svh 0;
+                    }
+    
+                    .contenido__itemdetail--txt_prec {
+                        //margin: 1svh 0;
+                        font-size: 2vw;
+                        line-height: 1;
+                    }
+    
+                }
+    
+            }
+
         }
 
     }
+
 }
 
-@media only screen and (min-width: 1146px) {
+@media only screen and (min-width: map-get($wth_res, "dkp_02")) {
+
+    #contenedor {
+
+        #contenido {
+
+            .contenido__itemdetail--cont {
+                padding: 1vw;
+                //margin: 1vw;
+                width: 37vw;
+                min-height: 10svh;
+                //margin: auto;
+
+                .contenido__itemdetail--nav {
+    
+                    ul {
+                        @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: flex-start, $flx_bx_gap: 1vw);
+                            
+                        li {
+                            font-size: 1.15vw;
+                        }
+
+                    }
+
+                }
+
+                .contenido__itemdetail--img {
+                    margin: 0 0 1.5svh;
+    
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                        // display: block;
+                        // border-radius: 5px;
+                    }
+                }
+    
+                .contenido__itemdetail--txt {
+                    padding: 0 0 0 1vw;
+    
+                    h1 {
+                        font-size: 1.75vw;
+                        line-height: 1;
+                    }
+
+                    .contenido__itemdetail--txt_desc {
+                        font-size: 1.25vw;
+                        line-height: 1.1;
+                        font-weight: 300;
+                        margin: 1.5svh 0;
+                    }
+    
+                    .contenido__itemdetail--txt_prec {
+                        //margin: 1svh 0;
+                        font-size: 1.25vw;
+                        line-height: 1;
+                    }
+    
+                }
+    
+            }
+
+        }
+
+    }
+
+}
+
+@media only screen and (min-width: map-get($brk_pts, "bp_06")) {
 
     #contenedor {
 
@@ -103,20 +316,3 @@
 
     }
 }
-
-/*
-
-@media only screen and (min-width: map-get($wth_res, "tbl_01")) {
-
-    #contenedor {
-
-        #cabecera {
-    
-            display: none;
-    
-        }
-    
-    }
-
-}
-*/

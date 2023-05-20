@@ -76,25 +76,24 @@
 
                     ul {
                         list-style: none;
-                        //@include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: flex-start, $flx_bx_gap: 11px);
-                        //@extend .flex-6;
-                        gap: 11px;
                         display: inline-block;
                         flex-grow: 1;
     
                         li {
                             display: inline-block;
                             width: auto;
-                            font-size: 0.8rem;
+                            font-size: 2vw;
                             font-family: $fnt_01;
                             color: map-get($color, "negro");
                             margin: 0 7px;
+                            line-height: 1;
     
                             a {
+                                //line-height: 1;
                                 color: map-get($color, "negro");
     
                                 &:hover {
-                                    color: map-get($color, "gris_01");
+                                    color: map-get($color, "rojo_03");
                                 }
                             }
     

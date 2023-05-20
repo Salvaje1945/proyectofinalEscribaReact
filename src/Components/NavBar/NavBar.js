@@ -18,19 +18,14 @@ const NavBar = ()=> {
     let mobil
 
     if(anchoPantalla < 768) {
-        // setMenuDkp(false)
-        // setMenuMob(true)
         escritorio = false
         mobil = true
     } else {
-        // setMenuDkp(true)
-        // setMenuMob(false)
         escritorio = true
         mobil = false
     }
 
-    console.log(anchoPantalla)
-    //console.log(mediaQ)
+    //console.log(anchoPantalla)
 
     const [menuDkp, setMenuDkp] = useState(escritorio)
     const [menuMob, setMenuMob] = useState(mobil)
