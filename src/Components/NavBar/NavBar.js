@@ -5,6 +5,39 @@ import { useState, useEffect } from 'react'
 
 const NavBar = ()=> {
 
+    const [productos, setProductos] = useState([])
+    useEffect(() => {
+        obtenerProductos()
+            .then(productos => {
+                setProductos(productos)
+            })
+            .catch(error => {
+                console.error("Ocurrió un error al obtener los productos:", error)
+            })
+    }, [])
+
+    async function obtenerProductos() {
+        const response = await fetch("http://localhost:3001/productos");
+        if (!response.ok) {
+            throw new Error("No se pudo obtener la lista de productos");
+        }
+        const productos = await response.json();
+        return productos.map(producto => ({
+            id: producto.id,
+            nombre: producto.nombre,
+            descripcion: producto.descripcion,
+            categoria: producto.categoria,
+            precio: producto.precio,
+            stock: producto.stock,
+            foto: producto.foto
+        }));
+    }
+
+    const categoriasUnicas = [...new Set(productos.map(categ => categ.categoria))];
+
+    //console.log(categoriasUnicas);
+
+
     function dameElAnchoDePantalla() {
         return Math.max(
             document.documentElement.clientWidth,
@@ -32,6 +65,15 @@ const NavBar = ()=> {
     const [menuAbierto, setMenuAbierto] = useState(false)
     const [menuCerrado, setMenuCerrado] = useState(true)
     const [despAct, setDespAct] = useState('cabecera__nav--desp')
+
+    const cerrarMenu = (evt)=> {
+        //console.log(evt)
+        setMenuAbierto(false)
+    }
+
+    const abrirMenu = (evt)=> {
+        setMenuCerrado(false)
+    }
 
     useEffect(()=>{
 
@@ -68,7 +110,8 @@ const NavBar = ()=> {
 
     }, [])
 
-    return <header id="cabecera">
+    return (
+        <header id="cabecera">
                 {menuMob && <div className={despAct}>
                     <ul>
                         <li>
@@ -76,12 +119,13 @@ const NavBar = ()=> {
                                 <CartWidget />
                             </div>
                         </li>
-                        <li><Link to={'/'} onClick={()=> setMenuAbierto(false)}>Inicio</Link></li>
-                        <li><Link to={'/catalogo'} onClick={()=> setMenuAbierto(false)}>Catálogo</Link></li>
-                        <li><Link to={'/categoria/Flores'} onClick={()=> setMenuAbierto(false)}>Flores</Link></li>
-                        <li><Link to={'/categoria/Decoración'} onClick={()=> setMenuAbierto(false)}>Decoración</Link></li>
-                        <li><Link to={'/categoria/Plantas'} onClick={()=> setMenuAbierto(false)}>Plantas</Link></li>
-                        <li><Link to={'/categoria/Insumos'} onClick={()=> setMenuAbierto(false)}>Insumos</Link></li>
+                        <li><Link to={'/'} onClick={cerrarMenu}>Inicio</Link></li>
+                        <li><Link to={'/catalogo'} onClick={cerrarMenu}>Catálogo</Link></li>
+                        {categoriasUnicas.map((categoria, index)=>{
+                            return (
+                                <li key={index}><Link to={`/categoria/${categoria}`} onClick={cerrarMenu}>{categoria}</Link></li>
+                            )
+                        })}
                     </ul>
                 </div>}
                 <div className="cabecera__cont">
@@ -92,19 +136,21 @@ const NavBar = ()=> {
                         <div className="cabecera__cont--nav_box">
                             <ul>
                                 <li><Link to={'/catalogo'}>Catálogo</Link></li>
-                                <li><Link to={'/categoria/Flores'}>Flores</Link></li>
-                                <li><Link to={'/categoria/Decoración'}>Decoración</Link></li>
-                                <li><Link to={'/categoria/Plantas'}>Plantas</Link></li>
-                                <li><Link to={'/categoria/Insumos'}>Insumos</Link></li>
+                                {categoriasUnicas.map((categoria, index)=>{
+                                    return (
+                                    <li key={index}><Link to={`/categoria/${categoria}`}>{categoria}</Link></li>
+                                    )
+                                })}
                             </ul>
                             <div className="cabecera__cont--cart">
                                 <CartWidget />
                             </div>
                         </div>
                     </nav>}
-                    {menuMob && <div className="cabcera__cont--btn">{menuCerrado && <i className="bi bi-list" onClick={()=> setMenuCerrado(false)}></i>}{menuAbierto && <i className="bi bi-x-lg" onClick={()=> setMenuAbierto(false)}></i>}</div>}
+                    {menuMob && <div className="cabcera__cont--btn">{menuCerrado && <i className="bi bi-list" onClick={abrirMenu}></i>}{menuAbierto && <i className="bi bi-x-lg" onClick={cerrarMenu}></i>}</div>}
                 </div>
            </header> 
+    )
 }
 
 export default NavBar

@@ -2,12 +2,24 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
+import ItemCount from "../ItemCount/ItemCount"
 
 const ItemDetail = ()=>{
 
     const { id } = useParams()
 
     const [producto, setProducto] = useState([])
+
+    const [changeCount, setChangeCount] = useState("button")
+
+    const handlerChangeCount = () => {
+        if (changeCount === 'button'){
+            setChangeCount("select")
+        } else {
+            setChangeCount("button")
+        }
+        
+    }
 
 
     useEffect(() => {
@@ -37,11 +49,15 @@ const ItemDetail = ()=>{
         };
     }
 
-    console.log(producto)
+    
 
     
 
-    //const tituloItem = `Elegiste el item id n°: ${id}`
+    //console.log(producto)
+
+    console.log(producto.stock)
+    console.log(producto.precio)
+    console.log(producto.nombre)
 
     return (
         <main id="contenido" className="item">
@@ -60,7 +76,14 @@ const ItemDetail = ()=>{
                     <p className="contenido__itemdetail--txt_prec">${producto.precio}</p>
                 </div>
                 <div className="contenido__itemdetail--act">
-                    Acá van los botones y esas cosas.
+                    <div>
+                    <input
+                        type="button"
+                        value="cambiar contador"
+                        onClick={handlerChangeCount}
+                    />
+                    </div>
+                    <div><ItemCount type={changeCount} maxCount={producto.stock} /></div>
                 </div>
             </div>
         </main>

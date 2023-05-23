@@ -63,16 +63,18 @@ const ItemListContainer = ()=> {
 
 //   console.log(categoriasUnicas);
 
-    console.log(items)
+    //console.log(items)
 
 
 
-    return <main id="contenido">
+    return (
+        <main id="contenido">
                 <div className="contenido__itemlistcontainer">
                     <Titulo titulo = {titulo} />
                     <Lista lista = {items} />
                 </div>
             </main>
+    )
 }
 
 export default ItemListContainer

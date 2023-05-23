@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/Components/NavBar/backup-NavBar.js
+/src/Components/NavBar/backup-NavBar2.js
 /src/Components/NavBar/_backup-navbar.scss
 /src/Components/Contador/backup-Contador.js
 /src/Components/Contador/backup-Contador2.js
@@ -31,6 +32,7 @@ yarn-error.log*
 /src/Components/ItemListContainer/backup-ItemListContainer.js
 /src/Components/ItemListContainer/backup-ItemListContainer2.js
 /src/Components/Lista/backup-Lista.js
+/src/Components/Lista/backup-Lista2.js
 /src/backup-App.js
 /src/backup-App2.js
 /src/backup-App3.js
