@@ -34,6 +34,13 @@
             //height: 45px;
             height: 6.3739376771svh;
         }
+
+        .cabecera__cont--load {
+            @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: flex-start, $flx_bx_gap: 0);
+            //@extend .flex-1;
+            //height: 45px;
+            height: 6.3739376771svh;
+        }
     }
 
     #contenido {

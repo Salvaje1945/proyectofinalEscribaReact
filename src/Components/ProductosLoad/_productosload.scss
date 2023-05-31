@@ -1,0 +1,97 @@
+@use '../../scss/vars' as *;
+@use '../../scss/predef' as *;
+
+#contenedor {
+
+    #contenido {
+
+        .contenido__itemlistcontainer--load {
+
+            .itemlistcontainer__load--titulo {
+                width: 250px;
+                height: 35px;
+                animation: ilc_carga_tit 1s linear infinite alternate;
+
+                @keyframes ilc_carga_tit {
+                    0% {
+                        background-color: map-get($color, "gris_01");
+                    }
+    
+                    100% {
+                        background-color: map-get($color, "gris_08");
+                    }
+                }
+            }
+
+            .contenido__itemlist--cont {
+    
+                .contenido__item--box {
+                    //height: 221px;
+                    background-color: map-get($color, "gris_04");
+                    animation: ilc_carga_box 1s linear infinite alternate;
+
+                    .contenido__item--box_img-cont {
+                        width: 100%;
+                        margin: 0 0 1svh 0;
+                        border-radius: 5px;
+
+                        img {
+                            object-fit:cover;
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                            border-radius: 5px;
+                        }
+                    }
+
+                    .contenido__item--load_tit {
+                        width: 100%;
+                        height: 35px;
+                        animation: ilc_carga_itm_tit 1s linear infinite alternate;
+
+                        @keyframes ilc_carga_itm_tit {
+                            0% {
+                                background-color: map-get($color, "gris_01");
+                            }
+            
+                            100% {
+                                background-color: map-get($color, "gris_08");
+                            }
+                        }
+                    }
+
+                    .contenido__item--load_p {
+                        width: 35%;
+                        height: 25px;
+                        animation: ilc_carga_itm_p 1s linear infinite alternate;
+
+                        @keyframes ilc_carga_itm_p {
+                            0% {
+                                background-color: map-get($color, "gris_01");
+                            }
+            
+                            100% {
+                                background-color: map-get($color, "gris_08");
+                            }
+                        }
+                    }
+
+                    @keyframes ilc_carga_box {
+                        0% {
+                            background-color: map-get($color, "gris_04");
+                        }
+        
+                        100% {
+                            background-color: map-get($color, "gris_11");
+                        }
+                    }
+
+                }
+    
+            }
+
+        }
+
+    }
+
+}

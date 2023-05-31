@@ -24,20 +24,32 @@ yarn-error.log*
 
 /src/Components/NavBar/backup-NavBar.js
 /src/Components/NavBar/backup-NavBar2.js
+/src/Components/NavBar/backup-NavBar3.js
+/src/Components/NavBar/backup-NavBar4.js
 /src/Components/NavBar/_backup-navbar.scss
 /src/Components/Contador/backup-Contador.js
 /src/Components/Contador/backup-Contador2.js
 /src/Components/Contador/backup-Contador3.js
 /src/Components/ItemDetail/backup-ItemDetail.js
+/src/Components/ItemDetail/backup-ItemDetail2.js
+/src/Components/ItemDetail/backup-ItemDetail3.js
+/src/Components/ItemDetail/backup-ItemDetail4.js
 /src/Components/ItemListContainer/backup-ItemListContainer.js
 /src/Components/ItemListContainer/backup-ItemListContainer2.js
+/src/Components/ItemListContainer/backup-ItemListContainer3.js
+/src/Components/ItemListContainer/backup-ItemListContainer4.js
 /src/Components/Lista/backup-Lista.js
 /src/Components/Lista/backup-Lista2.js
+/src/Components/ItemCount/backup-ItemCount.js
+/src/Components/ItemCount/backup-ItemCount2.js
 /src/backup-App.js
 /src/backup-App2.js
 /src/backup-App3.js
+/src/backup-App4.js
 /mirarAPI.txt
+/IDS-CATEGORIAS-FIREBASE.txt
 /backup-productos.json
+/backup-productos2.json
 /BACKUP-PRE-ROUTER/
 
 

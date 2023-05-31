@@ -7,7 +7,8 @@
 
         #contenido {
 
-            .contenido__itemlistcontainer {
+            .contenido__itemlistcontainer,
+            .contenido__itemlistcontainer--load {
 
                 .contenido__itemlist--cont {
 
@@ -96,9 +97,11 @@
 
         #contenido {
 
-            .contenido__itemlistcontainer {
+            .contenido__itemlistcontainer,
+            .contenido__itemlistcontainer--load  {
 
                 .contenido__itemlist--cont {
+                    //gap: 2.2vw;
 
                     .contenido__item--box {
                         //width: calc(29vw - 17px);
@@ -146,7 +149,8 @@
 
         #contenido {
 
-            .contenido__itemlistcontainer {
+            .contenido__itemlistcontainer,
+            .contenido__itemlistcontainer--load  {
 
                 .contenido__itemlist--cont {
 
@@ -302,7 +306,8 @@
 
         #contenido {
 
-            .contenido__itemlistcontainer {
+            .contenido__itemlistcontainer,
+            .contenido__itemlistcontainer--load  {
 
                 .contenido__itemlist--cont {
 

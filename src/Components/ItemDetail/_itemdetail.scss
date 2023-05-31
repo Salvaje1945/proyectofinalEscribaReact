@@ -93,7 +93,57 @@
 
             .contenido__itemdetail--act {
                 grid-area: accion;
-                //padding: 1svh 0 0;
+                
+                .contenido__itemdetail--act_count {
+                    @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 0);
+
+                    .contenido__itemdetail--act_count-stock {
+                        display: inline-block;
+                        flex-grow: 1;
+
+                        p {
+                            //font-family: $fnt_01;
+                            font-size: 3.75vw;
+                        }
+                    }
+
+                    .contenido__itemdetail--act_count-act {
+                        //display: inline-block;
+                        flex-grow: 2;
+                        @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 0);
+
+                        div {
+                            //display: inline-block;
+                            @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-around, $flx_bx_gap: 0);
+
+                            .contenido__itemdetail--act_count-act_btn-sumrest {
+                                display: inline-block;
+                                @include form__btns ($forms_btn-wth: 3.5vw, $forms_btn-hgt: 3.5vw, $forms_btn-bgc: map-get($color, "gris_07"), $forms_btn-color: map-get($color, "negro"), $forms_btn-fntsiz: 3.75vw, $forms_btn-fntwght: 600, $forms_btn-brdrad: 5px, $forms_btn-hvr_bgc: map-get($color, "gris_05"));
+                                line-height: 0.1;
+                            }
+    
+                            p {
+                                display: inline-block;
+                                font-size: 3.5vw;
+                                margin: 0 2.5vw;
+                            }
+
+                        }
+
+                        .contenido__itemdetail--act_count-act_btn-agregar {
+                            display: inline-block;
+                            @include form__btns ($forms_btn-wth: auto, $forms_btn-hgt: auto, $forms_btn-bgc: map-get($color, "gris_07"), $forms_btn-color: map-get($color, "negro"), $forms_btn-fntsiz: 3.5vw, $forms_btn-fntwght: 600, $forms_btn-brdrad: 5px, $forms_btn-hvr_bgc: map-get($color, "gris_05"));
+                            line-height: 1;
+                            padding: 1vw;
+                        }
+
+                    }
+
+                }
+
+                .contenido__itemdetail--act_precio {
+                    display: block;
+                }
             }
 
         }

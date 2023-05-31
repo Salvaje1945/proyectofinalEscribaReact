@@ -3,40 +3,7 @@ import logo from "./floresya.png"
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
-const NavBar = ()=> {
-
-    const [productos, setProductos] = useState([])
-    useEffect(() => {
-        obtenerProductos()
-            .then(productos => {
-                setProductos(productos)
-            })
-            .catch(error => {
-                console.error("Ocurrió un error al obtener los productos:", error)
-            })
-    }, [])
-
-    async function obtenerProductos() {
-        const response = await fetch("http://localhost:3001/productos");
-        if (!response.ok) {
-            throw new Error("No se pudo obtener la lista de productos");
-        }
-        const productos = await response.json();
-        return productos.map(producto => ({
-            id: producto.id,
-            nombre: producto.nombre,
-            descripcion: producto.descripcion,
-            categoria: producto.categoria,
-            precio: producto.precio,
-            stock: producto.stock,
-            foto: producto.foto
-        }));
-    }
-
-    const categoriasUnicas = [...new Set(productos.map(categ => categ.categoria))];
-
-    //console.log(categoriasUnicas);
-
+const NavBar = ({ categoria })=> {
 
     function dameElAnchoDePantalla() {
         return Math.max(
@@ -121,11 +88,9 @@ const NavBar = ()=> {
                         </li>
                         <li><Link to={'/'} onClick={cerrarMenu}>Inicio</Link></li>
                         <li><Link to={'/catalogo'} onClick={cerrarMenu}>Catálogo</Link></li>
-                        {categoriasUnicas.map((categoria, index)=>{
-                            return (
-                                <li key={index}><Link to={`/categoria/${categoria}`} onClick={cerrarMenu}>{categoria}</Link></li>
-                            )
-                        })}
+                        {categoria.map((cat) => (
+                            <li key={cat.id}><Link to={`/categoria/${cat.categoria}`} onClick={cerrarMenu}>{cat.categoria}</Link></li>
+                        ))}
                     </ul>
                 </div>}
                 <div className="cabecera__cont">
@@ -136,11 +101,9 @@ const NavBar = ()=> {
                         <div className="cabecera__cont--nav_box">
                             <ul>
                                 <li><Link to={'/catalogo'}>Catálogo</Link></li>
-                                {categoriasUnicas.map((categoria, index)=>{
-                                    return (
-                                    <li key={index}><Link to={`/categoria/${categoria}`}>{categoria}</Link></li>
-                                    )
-                                })}
+                                {categoria.map((cat) => (
+                                    <li key={cat.id}><Link to={`/categoria/${cat.categoria}`}>{cat.categoria}</Link></li>
+                                ))}
                             </ul>
                             <div className="cabecera__cont--cart">
                                 <CartWidget />

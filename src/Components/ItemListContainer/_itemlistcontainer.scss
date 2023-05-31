@@ -5,7 +5,8 @@
 
     #contenido {
 
-        .contenido__itemlistcontainer {
+        .contenido__itemlistcontainer,
+        .contenido__itemlistcontainer--load {
 
             h2 {
                 color: map-get($color, "rojo_03");

@@ -1,0 +1,66 @@
+@use '../../scss/vars' as *;
+@use '../../scss/predef' as *;
+
+#contenedor {
+
+    #cabecera {
+
+        .cabecera__cont--load {
+
+            .cabecera__cont--load_logo {
+                display: inline-block;
+                flex-grow: 0;
+                margin: 0 14px 0 0;
+
+                .load__logo--anim {
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 3px;
+                    animation: carga_logo 1s linear infinite alternate;
+                }
+
+                @keyframes carga_logo {
+                    0% {
+                        background-color: map-get($color, "gris_15");
+                    }
+
+                    100% {
+                        background-color: map-get($color, "gris_05");
+                    }
+                }
+            }
+
+            .cabecera__cont--load_nav {
+                display: inline-block;
+                flex-grow: 1;
+
+                .cabecera__cont--load_nav-box {
+                    @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: flex-start, $flx_bx_gap: 2vw);
+                    list-style: none;
+
+                    li {
+                        display: inline-block;
+                        width: 16vw;
+                        height: 20px;
+                        animation: carga_li 1s linear infinite alternate;
+                    }
+
+                    @keyframes carga_li {
+                        0% {
+                            background-color: map-get($color, "gris_15");
+                        }
+    
+                        100% {
+                            background-color: map-get($color, "gris_05");
+                        }
+                    }
+    
+                }
+            }
+
+        }
+
+    }
+
+}

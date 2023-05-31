@@ -1,8 +1,10 @@
 //import Titulo from "../Titulo"
 import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Link } from 'react-router-dom'
 import ItemCount from "../ItemCount/ItemCount"
+import { CartContext } from "../../context/CartContext"
+import { getDocument } from "../../utils/getFirestore";
 
 const ItemDetail = ()=>{
 
@@ -10,84 +12,102 @@ const ItemDetail = ()=>{
 
     const [producto, setProducto] = useState([])
 
-    const [changeCount, setChangeCount] = useState("button")
+    const [categ, setCateg] = useState([])
 
-    const handlerChangeCount = () => {
-        if (changeCount === 'button'){
-            setChangeCount("select")
-        } else {
-            setChangeCount("button")
-        }
-        
+    const { addProduct, restProduct } = useContext(CartContext)
+
+    
+
+    const dameElItem = () => {
+
+        console.log('------------------')
+        console.log('PRODUCTO ANTES DE TODA LA COSA:')
+        console.log(producto)
+        console.log('------------------')
+
+        getDocument('items', `${id}`).then((result)=> {
+            console.log('El RESULT DEL PRODUCTO:')
+            console.log(result)
+            console.log('------------------')
+            setProducto(result)
+
+        })
+
     }
 
+    const dameLaCateg = ()=> {
+
+        getDocument('categorias', `${producto.categoria}`).then((result)=> {
+            console.log('El RESULT DE LA CATEGORÍA:')
+            console.log(result)
+            console.log('------------------')
+            setCateg(result)
+        })
+
+    }
 
     useEffect(() => {
-        obtenerProductoPorId(id)
-            .then(producto => {
-                setProducto(producto)
-            })
-            .catch(error => {
-                console.error("Ocurrió un error al obtener los productos:", error)
-            })
-    }, [id])
 
-    async function obtenerProductoPorId(id) {
-        const response = await fetch(`http://localhost:3001/productos?id=${id}`);
-        if (!response.ok) {
-            throw new Error("No se pudo obtener el producto");
+        dameElItem()
+
+    }, []);
+
+    useEffect(() => {
+
+        dameLaCateg()
+
+    }, [producto])
+
+
+    const manejadorCount = (count, accion)=> {
+
+        if(accion === 'sumar'){
+            addProduct(count)
         }
-        const [producto] = await response.json();
-        return {
-            id: producto.id,
-            nombre: producto.nombre,
-            descripcion: producto.descripcion,
-            categoria: producto.categoria,
-            precio: producto.precio,
-            stock: producto.stock,
-            foto: producto.foto
-        };
+
+        if(accion === 'restar'){
+            restProduct(count)
+        }
+
     }
 
-    
+    console.log('------------------')
+    console.log('CATEG:')
+    console.log(categ)
+    console.log('------------------')
 
-    
+    console.log('------------------')
+    console.log('MEDIDA DE PRODUCTO:')
+    console.log(typeof(producto))
+    console.log('------------------')
 
-    //console.log(producto)
 
-    console.log(producto.stock)
-    console.log(producto.precio)
-    console.log(producto.nombre)
-
-    return (
+    return producto ? (
         <main id="contenido" className="item">
             <div className="contenido__itemdetail--cont">
                 <nav className="contenido__itemdetail--nav">
                     <ul>
                         <li><Link to={'/'} >Inicio</Link> /</li>
                         <li><Link to={'/catalogo'} >Catálogo</Link> /</li>
-                        <li><Link to={`/categoria/${producto.categoria}`}>{producto.categoria}</Link> /</li>
+                        {categ ? <li><Link to={`/categoria/${categ.categoria}`}>{categ.categoria}</Link></li> : null}
                     </ul>
                 </nav>
                 <div className="contenido__itemdetail--img"><img src={producto.foto} alt={producto.nombre} /></div>
                 <div className="contenido__itemdetail--txt">
                     <h1>{producto.nombre}</h1>
                     <p className="contenido__itemdetail--txt_desc">{producto.descripcion}</p>
-                    <p className="contenido__itemdetail--txt_prec">${producto.precio}</p>
+                    <p className="contenido__itemdetail--txt_prec">${producto.precio} x Unidad</p>
                 </div>
-                <div className="contenido__itemdetail--act">
-                    <div>
-                    <input
-                        type="button"
-                        value="cambiar contador"
-                        onClick={handlerChangeCount}
-                    />
-                    </div>
-                    <div><ItemCount type={changeCount} maxCount={producto.stock} /></div>
-                </div>
+                <ItemCount precio={producto.precio} maxCount={producto.stock} onChangeCount={(a, b)=> manejadorCount(a, b) } />
             </div>
         </main>
-    )
+    ) : (
+        <main id="contenido" className="item">
+            <div className="contenido__itemdetail--cont">
+                <h1>No pasa nada, che.</h1>
+            </div>
+        </main>
+    );
 
 }
 
