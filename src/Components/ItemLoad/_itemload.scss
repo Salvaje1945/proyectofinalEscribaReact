@@ -1,0 +1,66 @@
+@use '../../scss/vars' as *;
+@use '../../scss/predef' as *;
+
+#contenedor {
+
+    #contenido {
+
+        .contenido__itemdetail--load {
+            background-color: map-get($color, "gris_04");
+
+            .contenido__itemdetail--nav {
+                height: 4vw;
+                animation: itemload_anim_nav 1s linear infinite alternate;
+
+                @keyframes itemload_anim_nav {
+                    0% {
+                        background-color: map-get($color, "gris_09");
+                    }
+    
+                    100% {
+                        background-color: map-get($color, "gris_03");
+                    }
+                }
+            }
+
+            .contenido__itemdetail--txt {
+
+                .contenido__itemdetail--load_h1 {
+                    height: 6vw;
+                    width: 100%;
+                    animation: itemload_anim_tit 1s linear infinite alternate;
+
+                    @keyframes itemload_anim_tit {
+                        0% {
+                            background-color: map-get($color, "gris_09");
+                        }
+    
+                        100% {
+                            background-color: map-get($color, "gris_02");
+                        }
+                    }
+                }
+
+            }
+
+            .contenido__itemdetail--act {
+                height: 4.5vw;
+                animation: itemload_anim_act 1s linear infinite alternate;
+
+                @keyframes itemload_anim_act {
+                    0% {
+                        background-color: map-get($color, "gris_05");
+                    }
+    
+                    100% {
+                        background-color: map-get($color, "gris_01");
+                    }
+                }
+                
+            }
+
+        }
+
+    }
+
+}

@@ -34,6 +34,8 @@ yarn-error.log*
 /src/Components/ItemDetail/backup-ItemDetail2.js
 /src/Components/ItemDetail/backup-ItemDetail3.js
 /src/Components/ItemDetail/backup-ItemDetail4.js
+/src/Components/ItemDetail/backup-ItemDetail5.js
+/src/Components/Item/backup-Item.js
 /src/Components/ItemListContainer/backup-ItemListContainer.js
 /src/Components/ItemListContainer/backup-ItemListContainer2.js
 /src/Components/ItemListContainer/backup-ItemListContainer3.js
@@ -42,6 +44,7 @@ yarn-error.log*
 /src/Components/Lista/backup-Lista2.js
 /src/Components/ItemCount/backup-ItemCount.js
 /src/Components/ItemCount/backup-ItemCount2.js
+/src/Components/ItemCount/backup-ItemCount3.js
 /src/backup-App.js
 /src/backup-App2.js
 /src/backup-App3.js

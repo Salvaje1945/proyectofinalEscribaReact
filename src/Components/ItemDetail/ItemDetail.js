@@ -1,114 +1,47 @@
-//import Titulo from "../Titulo"
-import { useParams } from "react-router-dom"
-import { useEffect, useState, useContext } from "react"
-import { Link } from 'react-router-dom'
-import ItemCount from "../ItemCount/ItemCount"
-import { CartContext } from "../../context/CartContext"
-import { getDocument } from "../../utils/getFirestore";
+import Item from '../Item'
+import ItemLoad from '../ItemLoad'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+import { getDocument } from '../../utils/getFirestore'
 
-const ItemDetail = ()=>{
+const ItemDetail = ()=> {
 
     const { id } = useParams()
 
     const [producto, setProducto] = useState([])
-
     const [categ, setCateg] = useState([])
 
-    const { addProduct, restProduct } = useContext(CartContext)
-
-    
-
-    const dameElItem = () => {
-
-        console.log('------------------')
-        console.log('PRODUCTO ANTES DE TODA LA COSA:')
-        console.log(producto)
-        console.log('------------------')
-
-        getDocument('items', `${id}`).then((result)=> {
-            console.log('El RESULT DEL PRODUCTO:')
-            console.log(result)
-            console.log('------------------')
+    useEffect(() => {
+        getDocument('items', `${id}`).then((result) => {
             setProducto(result)
-
         })
-
-    }
-
-    const dameLaCateg = ()=> {
-
-        getDocument('categorias', `${producto.categoria}`).then((result)=> {
-            console.log('El RESULT DE LA CATEGORÍA:')
-            console.log(result)
-            console.log('------------------')
-            setCateg(result)
-        })
-
-    }
+    }, [id])
 
     useEffect(() => {
-
-        dameElItem()
-
-    }, []);
-
-    useEffect(() => {
-
-        dameLaCateg()
-
+        if (producto && producto.categoria) {
+            getDocument('categorias', `${producto.categoria}`).then((result) => {
+                setCateg(result)
+            })
+        }
     }, [producto])
 
-
-    const manejadorCount = (count, accion)=> {
-
-        if(accion === 'sumar'){
-            addProduct(count)
-        }
-
-        if(accion === 'restar'){
-            restProduct(count)
-        }
-
-    }
-
-    console.log('------------------')
-    console.log('CATEG:')
-    console.log(categ)
-    console.log('------------------')
-
-    console.log('------------------')
-    console.log('MEDIDA DE PRODUCTO:')
-    console.log(typeof(producto))
-    console.log('------------------')
-
-
-    return producto ? (
+    return (
         <main id="contenido" className="item">
-            <div className="contenido__itemdetail--cont">
-                <nav className="contenido__itemdetail--nav">
-                    <ul>
-                        <li><Link to={'/'} >Inicio</Link> /</li>
-                        <li><Link to={'/catalogo'} >Catálogo</Link> /</li>
-                        {categ ? <li><Link to={`/categoria/${categ.categoria}`}>{categ.categoria}</Link></li> : null}
-                    </ul>
-                </nav>
-                <div className="contenido__itemdetail--img"><img src={producto.foto} alt={producto.nombre} /></div>
-                <div className="contenido__itemdetail--txt">
-                    <h1>{producto.nombre}</h1>
-                    <p className="contenido__itemdetail--txt_desc">{producto.descripcion}</p>
-                    <p className="contenido__itemdetail--txt_prec">${producto.precio} x Unidad</p>
-                </div>
-                <ItemCount precio={producto.precio} maxCount={producto.stock} onChangeCount={(a, b)=> manejadorCount(a, b) } />
-            </div>
+            {producto.length === 0 ? (
+                <ItemLoad />
+            ) : (
+                <Item
+                    id={producto.id}
+                    nom={producto.nombre}
+                    desc={producto.descripcion}
+                    cat={categ.categoria}
+                    pre={producto.precio}
+                    stock={producto.stock}
+                    pic={producto.foto}
+                />
+            )}
         </main>
-    ) : (
-        <main id="contenido" className="item">
-            <div className="contenido__itemdetail--cont">
-                <h1>No pasa nada, che.</h1>
-            </div>
-        </main>
-    );
-
+    )
 }
 
 export default ItemDetail
