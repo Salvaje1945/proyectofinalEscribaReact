@@ -1,7 +1,7 @@
 import { useCount } from './hook/useCount'
 import { useState, useEffect } from 'react'
 
-const ItemCount = ({ maxCount, onChangeCount }) => {
+const ItemCount = ({ maxCount, onChangeCount, onClickAddCart }) => {
 
     const { count, decrement, increment } = useCount(0, 0, maxCount)
 
@@ -29,7 +29,11 @@ const ItemCount = ({ maxCount, onChangeCount }) => {
         }
     }
 
-    useEffect(()=> {
+    const agregarAlCarrito = () => {
+        onClickAddCart(count)
+    }
+
+    const sinEstoc = ()=> {
         if(maxCount === 0){
             setNoStock(true)
         } else {
@@ -37,6 +41,11 @@ const ItemCount = ({ maxCount, onChangeCount }) => {
                 sumarProducto()
             }
         }
+    }
+
+    useEffect(()=> {
+        sinEstoc()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(()=> {
@@ -47,7 +56,11 @@ const ItemCount = ({ maxCount, onChangeCount }) => {
         }
     }, [count])
 
-    return (
+    return noStock ? (
+        <div className="contenido__itemdetail--act">
+            <p>No hay stock de este producto</p>
+        </div>
+    ) : (
         <div className="contenido__itemdetail--act">
             <div className="contenido__itemdetail--act_count">
                 <div>
@@ -60,14 +73,11 @@ const ItemCount = ({ maxCount, onChangeCount }) => {
                     </button>
                 </div>
             </div>
-            {!noStock && <div className="contenido__itemdetail--act_cart">
-                {botonActivo && <button className="contenido__itemdetail--act_count-act_btn-agregar">
+            <div className="contenido__itemdetail--act_cart">
+                {botonActivo && <button className="contenido__itemdetail--act_count-act_btn-agregar" onClick={agregarAlCarrito}>
                     AGREGAR ({count}) AL CARRITO
                 </button>}
-            </div>}
-            {noStock && <div className="contenido__itemdetail--act_cart">
-                <p>No hay stock de este producto</p>    
-            </div>}    
+            </div>
         </div>
     )
 }

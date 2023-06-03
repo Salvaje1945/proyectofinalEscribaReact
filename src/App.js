@@ -6,6 +6,7 @@ import PieContainer from './Components/PieContainer'
 import Inicio from './Components/Inicio'
 import ItemListContainer from './Components/ItemListContainer'
 import ItemDetail from './Components/ItemDetail'
+import Cart from './Components/Cart'
 import { getCollection } from './utils/getFirestore'
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
         <Route path='/categoria/:id' element={<ItemListContainer />} />
 
         <Route path='/productos/:id' element={<ItemDetail />} />
+
+        <Route path='/carrito/:id' element={<Cart />} />
 
       </Routes>
 

@@ -31,8 +31,16 @@ export const CartContextProvider = ({ children }) => {
         })
     }
 
+    function resetProduct(AddProductCart) {
+        // console.log('restaproducto', AddProductCart)
+        dispatch({
+            type: 'RESET',
+            payload: { AddProductCart },
+        })
+    }
+
     return (
-        <CartContext.Provider value={{ AddProductCart: state.AddProductCart, addProduct, restProduct }}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ AddProductCart: state.AddProductCart, addProduct, restProduct, resetProduct }}>{children}</CartContext.Provider>
     )
 
 }

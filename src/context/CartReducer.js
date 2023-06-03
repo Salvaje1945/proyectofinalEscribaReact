@@ -6,7 +6,9 @@ export const cartReducer = (state, action) => {
             return { AddProductCart: state.AddProductCart + 1 }
         case "RESTAR":
             return { AddProductCart: state.AddProductCart - 1 }
-
+        case "RESET":
+            return { AddProductCart: 0 }
+        
         default:
             return state
     }

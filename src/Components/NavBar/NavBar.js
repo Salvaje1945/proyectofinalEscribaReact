@@ -1,9 +1,12 @@
 import CartWidget from '../CartWidget'
 import logo from './floresya.png'
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
 const NavBar = ({ categoria })=> {
+
+    const { resetProduct } = useContext(CartContext)
 
     function dameElAnchoDePantalla() {
         return Math.max(
@@ -32,11 +35,11 @@ const NavBar = ({ categoria })=> {
     const [menuCerrado, setMenuCerrado] = useState(true)
     const [despAct, setDespAct] = useState('cabecera__nav--desp')
 
-    const cerrarMenu = (evt)=> {
+    const cerrarMenu = ()=> {
         setMenuAbierto(false)
     }
 
-    const abrirMenu = (evt)=> {
+    const abrirMenu = ()=> {
         setMenuCerrado(false)
     }
 
@@ -76,23 +79,29 @@ const NavBar = ({ categoria })=> {
                             <CartWidget />
                         </div>
                     </li>
-                    <li><Link to={'/'} onClick={cerrarMenu}>Inicio</Link></li>
-                    <li><Link to={'/catalogo'} onClick={cerrarMenu}>Catálogo</Link></li>
+                    <li><Link to={'/'} onClick={(e)=> {resetProduct()
+                        cerrarMenu()
+                        e.stopPropagation()}}>Inicio</Link></li>
+                    <li><Link to={'/catalogo'} onClick={(e)=> {resetProduct()
+                        cerrarMenu()
+                        e.stopPropagation()}}>Catálogo</Link></li>
                     {categoria.map((cat) => (
-                        <li key={cat.id}><Link to={`/categoria/${cat.categoria}`} onClick={cerrarMenu}>{cat.categoria}</Link></li>
+                        <li key={cat.id}><Link to={`/categoria/${cat.categoria}`} onClick={(e)=> {resetProduct()
+                        cerrarMenu()
+                        e.stopPropagation()}}>{cat.categoria}</Link></li>
                     ))}
                 </ul>
             </div>}
             <div className="cabecera__cont">
                 <div className="cabecera__cont--logo">
-                    <Link to={'/'}><img src={logo} alt="Flores Ya" /></Link>
+                    <Link to={'/'} onClick={resetProduct}><img src={logo} alt="Flores Ya" /></Link>
                 </div>
                 {menuDkp && <nav className="cabecera__cont--nav">
                     <div className="cabecera__cont--nav_box">
                         <ul>
-                            <li><Link to={'/catalogo'}>Catálogo</Link></li>
+                            <li><Link to={'/catalogo'} onClick={resetProduct}>Catálogo</Link></li>
                             {categoria.map((cat) => (
-                                <li key={cat.id}><Link to={`/categoria/${cat.categoria}`}>{cat.categoria}</Link></li>
+                                <li key={cat.id}><Link to={`/categoria/${cat.categoria}`} onClick={resetProduct}>{cat.categoria}</Link></li>
                             ))}
                         </ul>
                         <div className="cabecera__cont--cart">
