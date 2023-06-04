@@ -3,11 +3,17 @@ export const cartReducer = (state, action) => {
     switch (action.type) {
         
         case "AGREGAR":
-            return { AddProductCart: state.AddProductCart + 1 }
+            return { CantProductCart: state.CantProductCart + 1 }
         case "RESTAR":
-            return { AddProductCart: state.AddProductCart - 1 }
+            return { CantProductCart: state.CantProductCart - 1 }
         case "RESET":
-            return { AddProductCart: 0 }
+            return { CantProductCart: 0 }
+        // case "CREAR":
+        //     return { NuevoCarrito: [{
+        //         usuario: 
+        //     }] }
+        // case "CREAR":
+        //     return { NuevoCarrito: state.NuevoCarrito }
         
         default:
             return state

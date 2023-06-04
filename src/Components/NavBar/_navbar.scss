@@ -32,6 +32,7 @@
                         border-radius: 3px;
                         padding: 0 9px;
                         min-width: 44px;
+                        visibility: hidden;
                         
                         .cabecera__cont--cart_cont {
 
@@ -40,6 +41,11 @@
                                 color: map-get($color, "negro");
                             }
                         }
+
+                    }
+
+                    .cabecera__desp--cart.activo {
+                        visibility: visible;
                     }
 
                     &:first-child {
@@ -103,6 +109,7 @@
     
                     .cabecera__cont--cart {
                         display: inline-block;
+                        visibility: hidden;
                         flex-grow: 0;
                         background-color: map-get($color, "rojo_01");
                         border-radius: 3px;
@@ -115,6 +122,11 @@
                                 color: map-get($color, "blanco");
                             }
                         }
+
+                    }
+
+                    .cabecera__cont--cart.activo {
+                        visibility: visible;
                     }
                 }
 

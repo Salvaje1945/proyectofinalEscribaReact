@@ -1,8 +1,14 @@
 import { useParams } from 'react-router'
+// import { useContext } from 'react'
+// import { CartContext } from '../../context/CartContext'
 
 const Cart = ()=> {
 
     const { id } = useParams()
+
+    //const { crearCarrito } = useContext(CartContext)
+
+    //console.log(crearCarrito)
 
     return (
         <main id="contenido" className="item">
