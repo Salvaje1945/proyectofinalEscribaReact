@@ -1,5 +1,5 @@
 import ItemCount from '../ItemCount'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 // import { useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
@@ -9,7 +9,11 @@ import { crearNuevoCarrito, actualizarCarrito } from '../../utils/crearActualiza
 
 const Item = ({ id, nom, desc, cat, pre, stock, pic })=> {
 
-    const { addProductCant, restProductCant, consultaDeCarrito, datosDelCarritoExistente, elUsuario, nuevoCarritoCreado } = useContext(CartContext)
+    // const { addProductCant, restProductCant, consultaDeCarrito, datosDelCarritoExistente, elUsuario, nuevoCarritoCreado, actualizarCarritoExistente } = useContext(CartContext)
+
+    const { addProductCant, consultaDeCarrito, datosDelCarritoExistente, elUsuario, nuevoCarritoCreado, actualizarCarritoExistente } = useContext(CartContext)
+
+    
 
 
     const navegar = useNavigate()
@@ -21,19 +25,12 @@ const Item = ({ id, nom, desc, cat, pre, stock, pic })=> {
     const datosCarritoExist = datosDelCarritoExistente()
 
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     console.log(datosCarritoExist.id)
-    //     console.log(datosCarritoExist.totalcant)
-
-    //     console.log(productosEnCarritoExist)
-
-    //     setCarritoExistItems(...productosEnCarritoExist)
-
-    //     //console.log(productosEnCarritoExist.cant)
+        actualizarCarritoExistente()
         
-    //     //eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [])
+        //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     
 
@@ -57,10 +54,12 @@ const Item = ({ id, nom, desc, cat, pre, stock, pic })=> {
 
     const manejadorCount = (count, accion)=> {
         if(accion === 'sumar'){
-            addProductCant(count)
+            //addProductCant(count)
+            console.log(`sumado ${count} producto`)
         }
         if(accion === 'restar'){
-            restProductCant(count)
+            //restProductCant(count)
+            console.log(`restado ${count} producto`)
         }
     }
 
@@ -89,6 +88,7 @@ const Item = ({ id, nom, desc, cat, pre, stock, pic })=> {
 
         
         console.log(prodParaAgregar)
+        console.log('qué onda con carritoverif: ', carritoVerif)
 
         if(!carritoVerif){
 
@@ -96,6 +96,8 @@ const Item = ({ id, nom, desc, cat, pre, stock, pic })=> {
                 console.log(`se generó el siguiente carrito: ${result}`)
             })
             nuevoCarritoCreado()
+            addProductCant(count)
+            actualizarCarritoExistente()
 
         } else {
             const cantidadTotal = datosCarritoExist.totalcant + count
@@ -110,7 +112,18 @@ const Item = ({ id, nom, desc, cat, pre, stock, pic })=> {
             console.log('--------------')
             // datosCarritoExist.id
 
-            actualizarCarrito('carritos', datosCarritoExist.id, prodParaActualizar, cantidadTotal, precioTotal);
+            actualizarCarrito('carritos', datosCarritoExist.id, prodParaActualizar, cantidadTotal, precioTotal)
+
+            if(actualizarCarrito){
+                console.log('actualizado...')
+                addProductCant(cantidadTotal)
+
+                //actualizarCarritoExistente()
+            } else {
+                console.log('¿Qué onda?')
+            }
+
+            
             
             
         }

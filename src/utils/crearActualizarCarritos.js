@@ -65,6 +65,7 @@ export const actualizarCarrito = async (coleccion, documentoId, objetoNuevo, can
             totalimp: importeTotal,
         });
         console.log('Documento actualizado con éxito');
+        return true
     } catch (error) {
         console.error('Error al actualizar el documento:', error);
     }

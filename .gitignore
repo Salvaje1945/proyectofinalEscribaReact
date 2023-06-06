@@ -45,6 +45,7 @@ yarn-error.log*
 /src/Components/ItemCount/backup-ItemCount.js
 /src/Components/ItemCount/backup-ItemCount2.js
 /src/Components/ItemCount/backup-ItemCount3.js
+/src/context/backup-CartContext.js
 /src/backup-App.js
 /src/backup-App2.js
 /src/backup-App3.js

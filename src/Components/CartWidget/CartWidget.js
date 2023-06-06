@@ -3,27 +3,29 @@ import { CartContext } from '../../context/CartContext'
 
 const CartWidget = ({ clase })=> {
 
-    const { consultaDeCarrito, datosDelCarritoExistente } = useContext(CartContext)
+    const { consultaDeCarrito, CantProductCart } = useContext(CartContext)
 
     const carritoVerif = consultaDeCarrito()
 
     const aVerSiSeVe = `${clase} activo`
 
-    const datosCarritoExist = datosDelCarritoExistente()
+    //const datosCarritoExist = datosDelCarritoExistente()
 
 
     //const [estadoCarrito, setEstadoCarrito] = useState(carritoVerif)
     const [visibilidadCarrito, setVisibilidadCarrito] = useState()
-    const [verCarritoCant, setVerCarritoCant] = useState(0)
+    // const [verCarritoCant, setVerCarritoCant] = useState()
 
     useEffect(()=> {
-        console.log(aVerSiSeVe)
-        console.log(datosCarritoExist)
+        // console.log(aVerSiSeVe)
+        console.log(carritoVerif)
         if(carritoVerif) {
-            console.log(datosCarritoExist.totalcant)
+            //console.log(datosCarritoExist.totalcant)
             //const laCantidad = datosCarritoExist.totalcant
             setVisibilidadCarrito(aVerSiSeVe)
-            setVerCarritoCant(datosCarritoExist.totalcant)
+            // if(datosCarritoExist != null){
+            //     setVerCarritoCant(datosCarritoExist.totalcant)
+            // }
         } else {
             setVisibilidadCarrito(clase)
         }
@@ -31,12 +33,16 @@ const CartWidget = ({ clase })=> {
     }, [])
 
     useEffect(()=> {
-        console.log(aVerSiSeVe)
+        //console.log(aVerSiSeVe)
+        console.log(carritoVerif)
         if(carritoVerif) {
             //const laCantidad = datosCarritoExist.totalcant
             setVisibilidadCarrito(aVerSiSeVe)
-            console.log(datosCarritoExist)
-            setVerCarritoCant(datosCarritoExist.totalcant)
+            // console.log(datosCarritoExist)
+            // setVerCarritoCant(datosCarritoExist)
+            // if(datosCarritoExist != null){
+            //     setVerCarritoCant(datosCarritoExist.totalcant)
+            // }
         } else {
             setVisibilidadCarrito(clase)
             //setVerCarritoCant(0)
@@ -50,14 +56,14 @@ const CartWidget = ({ clase })=> {
 
     // }, [datosCarritoExist])
 
-    console.log(carritoVerif)
+    // console.log(carritoVerif)
 
     return (
         <div className={visibilidadCarrito}>
             <div className="cabecera__cont--cart_cont">
                 <div><i className="bi bi-cart4"></i></div>
                 {/* <p>{verCarritoCant}</p> */}
-                {carritoVerif && <p>{verCarritoCant}</p>}
+                {carritoVerif && <p>{CantProductCart}</p>}
             </div>
         </div>
     ) 

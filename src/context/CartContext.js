@@ -1,30 +1,12 @@
 import { createContext, useReducer, useEffect, useState } from 'react'
 import { cartReducer } from './CartReducer'
-// import { getCollection } from '../../utils/getFirestore'
 import { getCollection, getCarrito } from '../utils/getFirestore'
-//import { carritoReducer } from './CarritoReducer'
 
-export const CartContext = createContext(null)
-
-// const valorInicial = 
-
-// const stateGlobal = [{ count: 0 }]
+export const CartContext = createContext()
 
 const stateGlobal = { CantProductCart: 0 }
 
-//const cartTotal = { TotalCartCant: 0 }
-
-//const estadoCarrito = { CarritoExiste: false }
-
-const carritos = []
-
 const usuarioId = 'VZMeW8qeWSNplaZju9de'
-
-//const [existeCarrito, setExisteCarrito] = useState(false)
-
-//const elementos = [{}]
-
-// const cartState = { NuevoCarrito: [{}] }
 
 export const CartContextProvider = ({ children }) => {
 
@@ -34,50 +16,69 @@ export const CartContextProvider = ({ children }) => {
 
     const [carritoExistente, setCarritoExistente] = useState(null)
 
-    useEffect(() => {
+    const traerColeccionCarritos = ()=> {
+
         getCollection('carritos').then((result) => {
             console.log(result)
             const verificarCarrito = result.some(carrito => carrito.idu === usuarioId)
             console.log(verificarCarrito)
             setExisteCarrito(verificarCarrito)
-            //setCarritoExistente(result)
-            //console.log(existeCarrito)
-            // if(verificarCarrito) {
-            //     setCarritoExistente(result)
-            //     console.log(carritoExistente)
-            // }
-            //console.log(carritoExistente)
         })
+
+    }
+
+    const traerDatosDelCarrito = ()=> {
+
+        const fetchDocumento = async () => {
+            const documento = await getCarrito('carritos', 'idu', usuarioId);
+            if (documento) {
+                console.log('El carrito: ', documento);
+                console.log('El ID del carrito: ', documento.id)
+                
+                setCarritoExistente(documento)
+                addProductCant(documento.totalcant)
+            } else {
+                console.log('Documento no encontrado');
+            }
+        };
+        fetchDocumento()
+
+    }
+
+    useEffect(() => {
         
+        traerColeccionCarritos()
+
+        // if(existeCarrito){
+        //     console.log('existe carrito')
+        //     traerDatosDelCarrito()
+        // } else {
+        //     console.log('no existe carrito')
+        // }
+
     }, [])
 
     useEffect(()=> {
 
         if(existeCarrito){
             console.log('existe carrito')
-            const fetchDocumento = async () => {
-                const documento = await getCarrito('carritos', 'idu', usuarioId);
-                if (documento) {
-                    console.log('El carrito: ', documento);
-                    console.log('El ID del carrito: ', documento.id)
-                    
-                    setCarritoExistente(documento)
-                    //console.log(carritoExistente)
-                } else {
-                    console.log('Documento no encontrado');
-                }
-                //return documento
-            };
-            fetchDocumento()
+            traerDatosDelCarrito()
         } else {
             console.log('no existe carrito')
         }
 
     }, [existeCarrito])
 
+    useEffect(()=> {
+
+        console.log('probando qué onda con el estado...', state)
+
+    }, [state])
+    
+
     function nuevoCarritoCreado() {
         setExisteCarrito(true)
-        console.log(existeCarrito)
+        console.log('nuevo carrito creado: ', existeCarrito)
     }
 
     function consultaDeCarrito () {
@@ -88,70 +89,41 @@ export const CartContextProvider = ({ children }) => {
         return carritoExistente
     }
 
+    function actualizarCarritoExistente () {
+        console.log('actualizando datos del carrito...')
+        traerDatosDelCarrito()
+    }
+
     function elUsuario () {
         return usuarioId
     }
-
-
-
-    //console.log('estado1', state)
-
-    //const [carrito, accionCarrito] = useReducer(cartReducer, cartState)
-
-    // function carritoTotalCant(TotalCartCant) {
-    //     console.log('el total: ', TotalCartCant)
-    //     console.log('el estado total', estadoActual)
-    //     const totalShit = e
-    //     accionEstado({
-    //         type: 'AJUSTARTOTAL',
-    //         payload: { TotalCartCant },
-    //     })
-    // }
 
     function addProductCant(CantProductCart) {
         console.log('sumaproducto', CantProductCart)
         console.log('estado2', state)
         dispatch({
-            type: 'AGREGAR',
-            payload: { CantProductCart },
+            type: 'ACTUALIZAR',
+            payload: CantProductCart,
         })
     }
 
-    function restProductCant(CantProductCart) {
-        console.log('restaproducto', CantProductCart)
-        dispatch({
-            type: 'RESTAR',
-            payload: { CantProductCart },
-        })
-    }
+    // function restProductCant(CantProductCart) {
+    //     console.log('restaproducto', CantProductCart)
+    //     dispatch({
+    //         type: 'RESTAR',
+    //         payload: { CantProductCart },
+    //     })
+    // }
 
-    function resetProductCant(CantProductCart) {
-        // console.log('restaproducto', CantProductCart)
-        dispatch({
-            type: 'RESET',
-            payload: { CantProductCart },
-        })
-    }
-
-
-    function crearCarrito(NuevoElemento) {
-        carritos.push(NuevoElemento)
-        console.log(carritos)
-    }
-
-    function consultaCarritos(usuario) {
-        if(carritos.length === 0){
-            return false
-        } else {
-            return carritos.some(elemento => elemento.idu === usuario)
-        }
-    }
-
-
+    // function resetProductCant(CantProductCart) {
+    //     dispatch({
+    //         type: 'RESET',
+    //         payload: { CantProductCart },
+    //     })
+    // }
 
     return (
-        // <CartContext.Provider value={{ CantProductCart: state.CantProductCart, TotalCartCant: estadoActual.TotalCartCant, addProductCant, restProductCant, resetProductCant, crearCarrito, carritoTotalCant, consultaCarritos }}>{children}</CartContext.Provider>
-        <CartContext.Provider value={{ CantProductCart: state.CantProductCart, addProductCant, restProductCant, resetProductCant, crearCarrito, consultaCarritos, consultaDeCarrito, datosDelCarritoExistente, elUsuario, nuevoCarritoCreado }}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ CantProductCart: state.CantProductCart, addProductCant, consultaDeCarrito, datosDelCarritoExistente, elUsuario, nuevoCarritoCreado, actualizarCarritoExistente }}>{children}</CartContext.Provider>
     )
 
 }

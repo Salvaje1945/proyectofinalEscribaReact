@@ -1,9 +1,11 @@
 export const cartReducer = (state, action) => {
-
+    console.log(action)
+    console.log(state)
+    console.log(action.payload)
     switch (action.type) {
         
-        case "AGREGAR":
-            return { CantProductCart: state.CantProductCart + 1 }
+        case "ACTUALIZAR":
+            return { CantProductCart: action.payload }
         case "RESTAR":
             return { CantProductCart: state.CantProductCart - 1 }
         case "RESET":
