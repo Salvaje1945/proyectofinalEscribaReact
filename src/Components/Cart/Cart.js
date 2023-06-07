@@ -1,4 +1,6 @@
 import { useParams } from 'react-router'
+import { useContext, useEffect } from 'react'
+import { CartContext } from '../../context/CartContext'
 // import { useContext } from 'react'
 // import { CartContext } from '../../context/CartContext'
 
@@ -9,6 +11,15 @@ const Cart = ()=> {
     //const { crearCarrito } = useContext(CartContext)
 
     //console.log(crearCarrito)
+
+    const { actualizarCarritoExistente } = useContext(CartContext)
+
+    useEffect(()=> {
+
+        actualizarCarritoExistente()
+
+        //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <main id="contenido" className="item">

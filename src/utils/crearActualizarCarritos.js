@@ -11,6 +11,7 @@ import {
     collection,
     addDoc,
     doc,
+    getDoc,
     updateDoc,
     arrayUnion,
 } from "firebase/firestore";
@@ -59,7 +60,6 @@ export const actualizarCarrito = async (coleccion, documentoId, objetoNuevo, can
 
     try {
         await updateDoc(documentoRef, {
-            // items: [objetoNuevo, ...documentoRef.items],
             items: arrayUnion(objetoNuevo),
             totalcant: cantidadTotal,
             totalimp: importeTotal,
@@ -71,7 +71,101 @@ export const actualizarCarrito = async (coleccion, documentoId, objetoNuevo, can
     }
 };
 
+export const actualizarProductoDeCarrito = async (coleccion, documentoId, itemId, nuevasPropiedades) => {
+    const db = getFirestore();
+    const documentoRef = doc(db, coleccion, documentoId);
 
+    try {
+        // Obtener el documento actual
+        const documentoSnap = await getDoc(documentoRef);
+        if (documentoSnap.exists()) {
+            // Obtener el campo "items" del documento
+            const items = documentoSnap.data().items;
+            
+            // Buscar el índice del item en el array "items"
+            const indiceItem = items.findIndex(item => item.idp === itemId);
+            
+            if (indiceItem !== -1) {
+                // Actualizar las propiedades del item
+                items[indiceItem].cant = nuevasPropiedades.cant;
+                items[indiceItem].imp = nuevasPropiedades.imp;
+                
+                // Actualizar el documento con los cambios
+                await updateDoc(documentoRef, {
+                    items,
+                    totalcant: nuevasPropiedades.cantTotal,
+                    totalimp: nuevasPropiedades.impTotal
+                });
+                
+                console.log('Producto actualizado con éxito');
+                return true;
+            } else {
+                console.error('No se encontró el Producto con el ID especificado');
+            }
+        } else {
+            console.error('No se encontró el documento especificado');
+        }
+    } catch (error) {
+        console.error('Error al actualizar el documento:', error);
+    }
+};
 
+// export const eliminarProductoDeCarrito = async (coleccion, documentoId, itemId) => {
+//     const db = getFirestore();
+//     const documentoRef = doc(db, coleccion, documentoId);
 
-  
+//     try {
+//         // Obtener el documento actual
+//         const documentoSnap = await getDoc(documentoRef);
+//         if (documentoSnap.exists()) {
+//             // Obtener el campo "items" del documento
+//             const items = documentoSnap.data().items;
+
+//             // Filtrar los items para eliminar el mapa con el ID especificado
+//             const nuevosItems = items.filter(item => item.idp !== itemId);
+
+//             // Actualizar el documento con los cambios
+//             await updateDoc(documentoRef, {
+//                 items: nuevosItems
+//             });
+
+//             console.log('Item eliminado con éxito');
+//             return true;
+//         } else {
+//             console.error('No se encontró el documento especificado');
+//         }
+//     } catch (error) {
+//         console.error('Error al eliminar el item:', error);
+//     }
+// };
+
+export const eliminarProductoDeCarrito = async (coleccion, documentoId, itemId, nuevaCantidadTotal, nuevoImporteTotal) => {
+    const db = getFirestore();
+    const documentoRef = doc(db, coleccion, documentoId);
+
+    try {
+        // Obtener el documento actual
+        const documentoSnap = await getDoc(documentoRef);
+        if (documentoSnap.exists()) {
+            // Obtener el campo "items" del documento
+            const items = documentoSnap.data().items;
+
+            // Filtrar los items para eliminar el mapa con el ID especificado
+            const nuevosItems = items.filter(item => item.idp !== itemId);
+
+            // Actualizar el documento con los cambios
+            await updateDoc(documentoRef, {
+                items: nuevosItems,
+                totalcant: nuevaCantidadTotal,
+                totalimp: nuevoImporteTotal
+            });
+
+            console.log('Item eliminado y totales actualizados con éxito');
+            return true;
+        } else {
+            console.error('No se encontró el documento especificado');
+        }
+    } catch (error) {
+        console.error('Error al eliminar el item y actualizar los totales:', error);
+    }
+};
