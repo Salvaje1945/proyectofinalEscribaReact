@@ -1,13 +1,9 @@
 import CartWidget from '../CartWidget'
 import logo from './floresya.png'
 import { Link } from 'react-router-dom'
-// import { useState, useEffect, useContext } from 'react'
 import { useState, useEffect } from 'react'
-// import { CartContext } from '../../context/CartContext'
 
 const NavBar = ({ categoria })=> {
-
-    // const { resetProductCant, consultaCarritos } = useContext(CartContext)
 
     function dameElAnchoDePantalla() {
         return Math.max(
@@ -71,19 +67,11 @@ const NavBar = ({ categoria })=> {
         })
     }, [])
 
-    // const verCarritos = ()=> {
-    //     const resultCarrito = consultaCarritos('VZMeW8qeWSNplaZju9de')
-    //     console.log(resultCarrito)
-    //     if(!resultCarrito){
-    //         //resetProductCant()
-    //     }
-    // }
-
     return (
         <header id="cabecera">
             {menuMob && <div className={despAct}>
                 <ul>
-                    <li>
+                    <li onClick={cerrarMenu}>
                         <CartWidget clase={'cabecera__desp--cart'} />
                     </li>
                     <li><Link to={'/'} onClick={cerrarMenu}>Inicio</Link></li>

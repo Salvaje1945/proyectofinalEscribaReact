@@ -25,41 +25,6 @@ export const getDocument = async (collections, idDocuments) => {
     }
 };
 
-// export const getCarrito = async (collections, campo, valor) => {
-//     const db = getFirestore();
-//     const carritoRef = doc(db, collections, campo, valor)
-//     const result = await getDocs(carritoRef);
-    
-//     let documento = null;
-  
-//     result.forEach((doc) => {
-//       const data = doc.data();
-//       if (data[campo] === valor) {
-//         documento = { id: doc.id, ...data };
-//         return;
-//       }
-//     });
-  
-//     return documento;
-//   };
-
-// export const getCarrito = async (collection, field, value) => {
-//   const db = getFirestore();
-//   const querySnapshot = await getDocs(collection(db, collection));
-  
-//   let documento = null;
-
-//   querySnapshot.forEach((doc) => {
-//     const data = doc.data();
-//     if (data[field] === value) {
-//       documento = { id: doc.id, ...data };
-//       return;
-//     }
-//   });
-
-//   return documento;
-// };
-
 export const getCarrito = async (collectionName, fieldName, value) => {
   const db = getFirestore();
   const collectionRef = collection(db, collectionName);

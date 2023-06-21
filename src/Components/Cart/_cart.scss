@@ -1,0 +1,258 @@
+@use '../../scss/vars' as *;
+@use '../../scss/predef' as *;
+
+#contenedor {
+
+    #contenido {
+
+        .contenido__cart {
+            background-color: map-get($color, "rojo_08");
+            border-radius: 9px;
+            padding: 3vw;
+            color: map-get($color, "blanco");
+            display: grid;
+
+            .contenido__cart--cont {
+                
+                .cart__cont--nav {
+                    text-align: left;
+                    margin: 0 0 2svh;
+
+                    ul {
+                        list-style: none;
+                        @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: flex-start, $flx_bx_gap: 3vw);
+    
+                        li {
+                            display: inline-block;
+                            font-size: 4vw;
+                            line-height: 1;
+                            font-weight: 900;
+                            //font-family: $fnt_01;
+    
+                            a {
+                                color: map-get($color, "blanco");
+                                font-weight: 500;
+    
+                                &:hover {
+                                    color: map-get($color, "negro");
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+                .cart__cont-list {
+                    @include caja__flexible--edit ($flx_bx_ff: column nowrap, $flx_bx_alit: flex-start, $flx_bx_juco: space-between, $flx_bx_gap: 0);
+
+                    ul {
+                        list-style: none;
+                        @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: flex-start, $flx_bx_gap: 3vw); 
+
+                        li {
+                            display: inline-block;
+                            font-size: 4vw;
+                            line-height: 1;
+                            //font-weight: 900;
+                            font-family: $fnt_01; 
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+
+        // .contenido__itemdetail--cont,
+        // .contenido__itemdetail--load {
+        //     background-color: map-get($color, "rojo_08");
+        //     border-radius: 9px;
+        //     padding: 3vw;
+        //     color: map-get($color, "blanco");
+        //     display: grid;
+        //     grid-template-columns: 100%;
+        //     grid-template-rows: repeat(4, auto);
+        //     grid-template-areas:
+
+        //         "naveg"
+        //         "img"
+        //         "info"
+        //         "accion"
+
+        //     ;
+
+        //     .contenido__itemdetail--nav,
+        //     .contenido__itemdetail--img,
+        //     .contenido__itemdetail--txt,
+        //     .contenido__itemdetail--act {
+        //         display: block;
+        //     }
+
+        //     .contenido__itemdetail--nav {
+        //         grid-area: naveg;
+        //         //padding: 0 0 1.5svh;
+        //         text-align: left;
+        //         margin: 0 0 2svh;
+
+        //         ul {
+        //             list-style: none;
+        //             @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: flex-start, $flx_bx_gap: 3vw);
+
+        //             li {
+        //                 display: inline-block;
+        //                 font-size: 4vw;
+        //                 line-height: 1;
+        //                 font-weight: 900;
+
+        //                 a {
+        //                     color: map-get($color, "blanco");
+        //                     font-weight: 500;
+
+        //                     &:hover {
+        //                         color: map-get($color, "negro");
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        //     .contenido__itemdetail--img {
+        //         grid-area: img;
+        //         border-radius: 5px;
+        //         margin: 0 0 1.5svh;
+
+        //         img {
+        //             object-fit:cover;
+        //             width: 100%;
+        //             height: 100%;
+        //             display: block;
+        //             border-radius: 5px;
+        //         }
+        //     }
+
+        //     .contenido__itemdetail--txt {
+        //         grid-area: info;
+        //         text-align: left;
+
+        //         h1 {
+        //             font-size: 6vw;
+        //         }
+
+        //         .contenido__itemdetail--txt_desc {
+        //             font-size: 4.5vw;
+        //         }
+
+        //         .contenido__itemdetail--txt_prec {
+        //             margin: 1svh 0;
+        //             font-size: 4.5vw;
+        //             font-weight: 600;
+        //         }
+
+        //     }
+
+        //     /*
+        //     .contenido__itemdetail--act {
+        //         grid-area: accion;
+                
+        //         .contenido__itemdetail--act_count {
+        //             @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 0);
+
+        //             .contenido__itemdetail--act_count-stock {
+        //                 display: inline-block;
+        //                 flex-grow: 1;
+
+        //                 p {
+        //                     //font-family: $fnt_01;
+        //                     font-size: 3.75vw;
+        //                 }
+        //             }
+
+        //             .contenido__itemdetail--act_count-act {
+        //                 //display: inline-block;
+        //                 flex-grow: 2;
+        //                 @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 0);
+
+        //                 div {
+        //                     //display: inline-block;
+        //                     @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-around, $flx_bx_gap: 0);
+
+        //                     .contenido__itemdetail--act_count-act_btn-sumrest {
+        //                         display: inline-block;
+        //                         @include form__btns ($forms_btn-wth: 3.5vw, $forms_btn-hgt: 3.5vw, $forms_btn-bgc: map-get($color, "gris_07"), $forms_btn-color: map-get($color, "negro"), $forms_btn-fntsiz: 3.75vw, $forms_btn-fntwght: 600, $forms_btn-brdrad: 5px, $forms_btn-hvr_bgc: map-get($color, "gris_05"));
+        //                         line-height: 0.1;
+        //                     }
+    
+        //                     p {
+        //                         display: inline-block;
+        //                         font-size: 3.5vw;
+        //                         margin: 0 2.5vw;
+        //                     }
+
+        //                 }
+
+        //                 .contenido__itemdetail--act_count-act_btn-agregar {
+        //                     display: inline-block;
+        //                     @include form__btns ($forms_btn-wth: auto, $forms_btn-hgt: auto, $forms_btn-bgc: map-get($color, "gris_07"), $forms_btn-color: map-get($color, "negro"), $forms_btn-fntsiz: 3.5vw, $forms_btn-fntwght: 600, $forms_btn-brdrad: 5px, $forms_btn-hvr_bgc: map-get($color, "gris_05"));
+        //                     line-height: 1;
+        //                     padding: 1vw;
+        //                 }
+
+        //             }
+
+        //         }
+
+                
+        //     }
+        //     */
+
+        //     .contenido__itemdetail--act {
+        //         grid-area: accion;
+        //         @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 0);
+                
+        //         .contenido__itemdetail--act_count {
+        //             //flex-grow: 1;
+        //             @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-between, $flx_bx_gap: 0);
+
+        //             div {
+        //                 //display: inline-block;
+        //                 @include caja__flexible--edit ($flx_bx_ff: row nowrap, $flx_bx_alit: center, $flx_bx_juco: space-around, $flx_bx_gap: 0);
+
+        //                 .contenido__itemdetail--act_count-act_btn-sumrest {
+        //                     display: inline-block;
+        //                     @include form__btns ($forms_btn-wth: 6vw, $forms_btn-hgt: 6vw, $forms_btn-bgc: map-get($color, "gris_07"), $forms_btn-color: map-get($color, "negro"), $forms_btn-fntsiz: 6vw, $forms_btn-fntwght: 600, $forms_btn-brdrad: 5px, $forms_btn-hvr_bgc: map-get($color, "gris_05"));
+        //                     line-height: 0.1;
+        //                 }
+    
+        //                 p {
+        //                     display: inline-block;
+        //                     font-size: 5vw;
+        //                     margin: 0 2.5vw;
+        //                     min-width: 6.4vw;
+        //                     text-align: center;
+        //                 }
+        //             }
+
+        //         }
+
+        //         .contenido__itemdetail--act_cart {
+        //             display: inline-block;
+        //             //flex-grow: 2;
+        //             //text-align: right;
+                    
+        //             .contenido__itemdetail--act_count-act_btn-agregar {
+        //                 display: inline-block;
+        //                 @include form__btns ($forms_btn-wth: auto, $forms_btn-hgt: auto, $forms_btn-bgc: map-get($color, "gris_07"), $forms_btn-color: map-get($color, "negro"), $forms_btn-fntsiz: 4vw, $forms_btn-fntwght: 600, $forms_btn-brdrad: 5px, $forms_btn-hvr_bgc: map-get($color, "gris_05"));
+        //                 line-height: 1;
+        //                 padding: 1.3vw 2vw 1vw;
+        //             }
+
+        //         }
+                
+        //     }
+
+        // }
+
+    }
+
+}

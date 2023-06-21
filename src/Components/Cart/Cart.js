@@ -1,31 +1,70 @@
 import { useParams } from 'react-router'
-import { useContext, useEffect } from 'react'
+import CartList from '../CartList'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState, useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
-// import { useContext } from 'react'
-// import { CartContext } from '../../context/CartContext'
 
 const Cart = ()=> {
 
     const { id } = useParams()
 
-    //const { crearCarrito } = useContext(CartContext)
+    const { datosDelCarritoExistente } = useContext(CartContext)
 
-    //console.log(crearCarrito)
+    const navegar = useNavigate()
 
-    const { actualizarCarritoExistente } = useContext(CartContext)
+    const datosCarritoExist = datosDelCarritoExistente()
+
+    let miCarrito
+
+    if(id === 'micarrito'){
+        miCarrito = datosCarritoExist.id
+    } else {
+        miCarrito = id
+    }
+
+    const [verCarrito, setVerCarrito] = useState(false)
+
+    const [carritoEliminado, setCarritoEliminado] = useState(false)
+
 
     useEffect(()=> {
 
-        actualizarCarritoExistente()
-
+        if(id === 'eliminado') {
+            setCarritoEliminado(true)
+        } else {
+            if(id === 'micarrito'){
+                setVerCarrito(true)
+            } else {
+                setTimeout(() => {
+                    setVerCarrito(true)
+                }, 2000);
+            }
+        }
         //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return (
+    useEffect(()=>{
+
+        if(carritoEliminado) {
+
+            setTimeout(() => {
+                navegar('/')
+            }, 3000);
+
+        }
+
+    }, [carritoEliminado])
+
+    return carritoEliminado ? (
         <main id="contenido" className="item">
-            <div className="contenido__itemdetail--cont">
-                <h1>Hola, soy tu carrito de compras, perri.</h1>
-                <p>{id}</p>
+            <div className='contenido__cart'>
+                <h1>Carrito eliminado con éxito.</h1>
+            </div>
+        </main>
+    ) : (
+        <main id="contenido" className="item">
+            <div className='contenido__cart'>
+                {verCarrito ? <CartList carritoId={miCarrito} /> : <h1>Operación realizada con éxito. Aguarde un instante, por favor.</h1>}
             </div>
         </main>
     )

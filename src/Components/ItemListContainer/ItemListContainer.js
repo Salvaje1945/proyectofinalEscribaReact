@@ -1,19 +1,13 @@
 import Titulo from '../Titulo'
 import ProductosLoad from '../ProductosLoad/'
 import Lista from '../Lista'
-import { useEffect, useState, useContext } from 'react'
-import { CartContext } from '../../context/CartContext'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { getCollection } from '../../utils/getFirestore'
 
 const ItemListContainer = ()=> {
 
     const { id } = useParams()
-
-    const { consultaDeCarrito, datosDelCarritoExistente } = useContext(CartContext)
-
-    // console.log(consultaDeCarrito())
-
 
 
     const [productos, setProductos] = useState([])
@@ -33,8 +27,6 @@ const ItemListContainer = ()=> {
 
     useEffect(() => {
         getListItem()
-        console.log(consultaDeCarrito())
-        console.log(datosDelCarritoExistente())
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

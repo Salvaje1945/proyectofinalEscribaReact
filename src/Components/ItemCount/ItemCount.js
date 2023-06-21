@@ -1,15 +1,7 @@
 import { useCount } from './hook/useCount'
 import { useState, useEffect } from 'react'
 
-const ItemCount = ({ initVal, maxCount, onChangeCount, onClickAddCart, onClickUpdateCart, onClickDeleteCart }) => {
-    console.log('INITVAL: ')
-    console.log(initVal)
-    console.log(typeof initVal)
-    console.log('*********************************')
-    console.log('MAXCOUNT: ')
-    console.log(maxCount)
-    console.log(typeof maxCount)
-    console.log('*********************************')
+const ItemCount = ({ initVal, maxCount, onClickAddCart, onClickUpdateCart, onClickDeleteCart }) => {
 
     const { count, decrement, increment, reset } = useCount(initVal, 0, maxCount)
 
@@ -20,31 +12,6 @@ const ItemCount = ({ initVal, maxCount, onChangeCount, onClickAddCart, onClickUp
     const [botonEliminar, setBotonEliminar] = useState(false)
 
     const [noStock, setNoStock] = useState(false)
-
-    console.log('COUNT: ')
-    console.log(count)
-    console.log(typeof count)
-    console.log('*********************************')
-
-    let accion
-
-    const sumarProducto = ()=> {
-        increment()
-        accion = 'sumar'
-        if(count < maxCount){
-
-            onChangeCount(count, accion)
-
-        }
-    }
-
-    const restarProducto = ()=> {
-        decrement()
-        accion = 'restar'
-        if(count > 0){
-            onChangeCount(count, accion)
-        }
-    }
 
     const agregarAlCarrito = () => {
         onClickAddCart(count)
@@ -63,14 +30,13 @@ const ItemCount = ({ initVal, maxCount, onChangeCount, onClickAddCart, onClickUp
             setNoStock(true)
         } else {
             if(count === 0){
-                sumarProducto()
+                increment()
             }
         }
     }
 
     useEffect(()=> {
         sinEstoc()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(()=> {
@@ -109,11 +75,11 @@ const ItemCount = ({ initVal, maxCount, onChangeCount, onClickAddCart, onClickUp
         <div className="contenido__itemdetail--act">
             <div className="contenido__itemdetail--act_count">
                 <div>
-                    <button className="contenido__itemdetail--act_count-act_btn-sumrest" onClick={restarProducto}>
+                    <button className="contenido__itemdetail--act_count-act_btn-sumrest" onClick={decrement}>
                         -
                     </button>
                     <p>{count}</p>
-                    <button className="contenido__itemdetail--act_count-act_btn-sumrest" onClick={sumarProducto}>
+                    <button className="contenido__itemdetail--act_count-act_btn-sumrest" onClick={increment}>
                         +
                     </button>
                 </div>
